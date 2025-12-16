@@ -154,7 +154,7 @@ function App() {
         {menuOpen && (
           <div className="mobile-menu">
             <button onClick={() => { setShowHelp(true); setMenuOpen(false); }}>
-              ❓ Ajuda
+              ❓ Com jugar
             </button>
             <button onClick={() => { setShowRanking(true); setMenuOpen(false); }}>
               🏆 Rànquing
@@ -198,7 +198,7 @@ function App() {
           🔄 Reiniciar
         </button>
         <button className="btn btn-help" onClick={() => setShowHelp(true)}>
-          ❓ Ajuda
+          ❓ Com jugar
         </button>
         <button className="btn btn-ranking" onClick={() => setShowRanking(true)}>
           🏆 Rànquing

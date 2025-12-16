@@ -110,37 +110,51 @@
   box-shadow: 0 0 20px rgba(50, 205, 50, 0.8);
 }
 
-/* Responsive */
+/* Responsive - Tablet */
 @media (max-width: 600px) {
   .cell {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
   }
 
   .knight {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .cell-number {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   .valid-indicator {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
-@media (max-width: 400px) {
+/* Responsive - Mòbil: maximitzar taulell */
+@media (max-width: 550px) {
   .cell {
-    width: 30px;
-    height: 30px;
+    /* Calcula mida per ocupar tot l'ample: (100vw - padding) / 10 caselles */
+    width: calc((100vw - 36px) / 10);
+    height: calc((100vw - 36px) / 10);
   }
 
   .knight {
-    font-size: 1.2rem;
+    font-size: calc((100vw - 36px) / 10 * 0.6);
   }
 
   .cell-number {
-    font-size: 0.6rem;
+    font-size: calc((100vw - 36px) / 10 * 0.28);
+  }
+
+  .valid-indicator {
+    font-size: calc((100vw - 36px) / 10 * 0.4);
+  }
+}
+
+/* Limitar mida màxima en pantalles molt amples */
+@media (min-width: 551px) and (max-width: 600px) {
+  .cell {
+    width: 45px;
+    height: 45px;
   }
 }
