@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
 import Board from './components/Board'
-import Controls from './components/Controls'
 import Ranking from './components/Ranking'
 import GameOverModal from './components/GameOverModal'
+import HelpModal from './components/HelpModal'
 import './App.css'
 
 // Moviments possibles del cavall (en forma de L)
@@ -19,8 +19,10 @@ function App() {
   const [turn, setTurn] = useState(0)
   const [gameOver, setGameOver] = useState(false)
   const [showRanking, setShowRanking] = useState(false)
+  const [showHelp, setShowHelp] = useState(false)
   const [invalidMove, setInvalidMove] = useState(null)
   const [history, setHistory] = useState([])
+  const [menuOpen, setMenuOpen] = useState(false)
   const [message, setMessage] = useState("🎯 Clica una casella per col·locar el cavall!")
 
   // Obtenir moviments vàlids des d'una posició
@@ -54,11 +56,11 @@ function App() {
       setKnightPosition([row, col])
       setTurn(1)
       setHistory([{ board: board.map(r => [...r]), position: null, turn: 0 }])
-      setMessage("🐴 Mou el cavall en L! Les caselles verdes són vàlides.")
+      setMessage("🐴 Mou el cavall en L!")
 
       if (checkGameOver(row, col, newBoard)) {
         setGameOver(true)
-        setMessage("🏁 Joc acabat! Has fet 1 moviment.")
+        setMessage("🏁 Joc acabat! 1 moviment.")
       }
       return
     }
@@ -69,9 +71,8 @@ function App() {
     const isValidMove = validMoves.some(([r, c]) => r === row && c === col)
 
     if (!isValidMove) {
-      // Moviment invàlid - mostrar feedback vermell
       setInvalidMove([row, col])
-      setMessage("❌ Moviment no vàlid! El cavall es mou en L.")
+      setMessage("❌ Moviment no vàlid!")
       setTimeout(() => setInvalidMove(null), 500)
       return
     }
@@ -85,11 +86,11 @@ function App() {
     setBoard(newBoard)
     setKnightPosition([row, col])
     setTurn(newTurn)
-    setMessage(`✨ Torn ${newTurn} - Molt bé! Continua!`)
+    setMessage(`✨ Torn ${newTurn} - Molt bé!`)
 
     if (checkGameOver(row, col, newBoard)) {
       setGameOver(true)
-      setMessage(`🏁 Joc acabat! Has fet ${newTurn} moviments.`)
+      setMessage(`🏁 Fi! ${newTurn} moviments.`)
     }
   }
 
@@ -102,7 +103,8 @@ function App() {
     setKnightPosition(lastState.position)
     setTurn(lastState.turn)
     setHistory(history.slice(0, -1))
-    setMessage(lastState.position ? `⏪ Torn ${lastState.turn} - Moviment desfet!` : "🎯 Clica una casella per col·locar el cavall!")
+    setMessage(lastState.position ? `⏪ Desfet!` : "🎯 Clica per col·locar el cavall!")
+    setMenuOpen(false)
   }
 
   // Reiniciar partida
@@ -114,6 +116,7 @@ function App() {
     setHistory([])
     setInvalidMove(null)
     setMessage("🎯 Clica una casella per col·locar el cavall!")
+    setMenuOpen(false)
   }
 
   // Tancar modal de fi de joc
@@ -123,12 +126,47 @@ function App() {
 
   // Obtenir moviments vàlids actuals
   const currentValidMoves = knightPosition ? getValidMoves(knightPosition[0], knightPosition[1], board) : []
+  const canUndo = history.length > 0 && !gameOver
 
   return (
     <div className="app">
       <header className="header">
-        <h1>🐴 El Passeig del Cavall 🐴</h1>
-        <p className="subtitle">Mou el cavall per tot el taulell sense repetir caselles!</p>
+        <div className="header-content">
+          <h1>🐴 El Passeig del Cavall</h1>
+
+          {/* Botons desktop */}
+          <div className="header-buttons desktop-only">
+            <button className="btn btn-small btn-help" onClick={() => setShowHelp(true)}>
+              ❓
+            </button>
+            <button className="btn btn-small btn-ranking" onClick={() => setShowRanking(true)}>
+              🏆
+            </button>
+          </div>
+
+          {/* Menú hamburguesa mòbil */}
+          <button className="menu-toggle mobile-only" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </div>
+
+        {/* Menú desplegable mòbil */}
+        {menuOpen && (
+          <div className="mobile-menu">
+            <button onClick={() => { setShowHelp(true); setMenuOpen(false); }}>
+              ❓ Ajuda
+            </button>
+            <button onClick={() => { setShowRanking(true); setMenuOpen(false); }}>
+              🏆 Rànquing
+            </button>
+            <button onClick={handleUndo} disabled={!canUndo}>
+              ⏪ Desfer
+            </button>
+            <button onClick={handleRestart}>
+              🔄 Reiniciar
+            </button>
+          </div>
+        )}
       </header>
 
       <div className="game-info">
@@ -151,12 +189,21 @@ function App() {
         />
       </div>
 
-      <Controls
-        onUndo={handleUndo}
-        onRestart={handleRestart}
-        onShowRanking={() => setShowRanking(true)}
-        canUndo={history.length > 0 && !gameOver}
-      />
+      {/* Controls desktop */}
+      <div className="controls desktop-only">
+        <button className="btn btn-undo" onClick={handleUndo} disabled={!canUndo}>
+          ⏪ Desfer
+        </button>
+        <button className="btn btn-restart" onClick={handleRestart}>
+          🔄 Reiniciar
+        </button>
+        <button className="btn btn-help" onClick={() => setShowHelp(true)}>
+          ❓ Ajuda
+        </button>
+        <button className="btn btn-ranking" onClick={() => setShowRanking(true)}>
+          🏆 Rànquing
+        </button>
+      </div>
 
       {gameOver && (
         <GameOverModal
@@ -169,6 +216,12 @@ function App() {
       {showRanking && (
         <Ranking
           onClose={() => setShowRanking(false)}
+        />
+      )}
+
+      {showHelp && (
+        <HelpModal
+          onClose={() => setShowHelp(false)}
         />
       )}
     </div>

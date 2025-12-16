@@ -5,41 +5,112 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-sizing: border-box;
 }
 
+/* Header */
 .header {
-  text-align: center;
-  margin-bottom: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 8px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .header h1 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: #fff;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin: 0;
-  animation: bounce 2s ease-in-out infinite;
+  text-align: center;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.header-buttons {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  right: 0;
 }
 
-.subtitle {
-  color: #f0f0f0;
-  font-size: 1.1rem;
+.btn-small {
+  padding: 8px 12px !important;
+  font-size: 1.2rem !important;
+  min-width: auto !important;
+}
+
+/* Menú mòbil */
+.menu-toggle {
+  position: absolute;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin-top: 10px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
+.mobile-menu button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  color: white;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.mobile-menu button:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+.mobile-menu button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive visibility */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* Info del joc */
 .game-info {
   background: white;
-  border-radius: 20px;
-  padding: 15px 30px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 10px 20px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
@@ -47,42 +118,203 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin-bottom: 5px;
 }
 
 .turn-label {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #555;
   font-weight: bold;
 }
 
 .turn-number {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #667eea;
-  text-shadow: 2px 2px 4px rgba(102, 126, 234, 0.3);
 }
 
 .max-score {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #999;
 }
 
 .message {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: #444;
   font-weight: 500;
-  padding: 8px 15px;
+  padding: 5px 10px;
   background: linear-gradient(to right, #f0f0f0, #fff, #f0f0f0);
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
+/* Contenidor del taulell */
 .game-container {
   background: white;
-  border-radius: 20px;
-  padding: 15px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-undo {
+  background: linear-gradient(145deg, #ffa726, #fb8c00);
+}
+
+.btn-restart {
+  background: linear-gradient(145deg, #42a5f5, #1e88e5);
+}
+
+.btn-help {
+  background: linear-gradient(145deg, #66bb6a, #43a047);
+}
+
+.btn-ranking {
+  background: linear-gradient(145deg, #ab47bc, #8e24aa);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 700px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .controls {
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive - Mòbil */
+@media (max-width: 550px) {
+  .app {
+    padding: 8px;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex;
+  }
+
+  .header h1 {
+    font-size: 1.3rem;
+  }
+
+  .game-info {
+    padding: 8px 15px;
+  }
+
+  .turn-number {
+    font-size: 1.6rem;
+  }
+
+  .turn-label {
+    font-size: 1rem;
+  }
+
+  .message {
+    font-size: 0.85rem;
+  }
+
+  .game-container {
+    padding: 8px;
+  }
+}
+
+/* Responsive - Mòbil petit */
+@media (max-width: 400px) {
+  .header h1 {
+    font-size: 1.1rem;
+  }
+
+  .game-info {
+    padding: 6px 12px;
+  }
+
+  .turn-number {
+    font-size: 1.4rem;
+  }
+
+  .message {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
+
+/* Assegurar que tot càpiga a la pantalla */
+@media (max-height: 750px) {
+  .app {
+    padding: 5px;
+  }
+
+  .header {
+    margin-bottom: 5px;
+  }
+
+  .game-info {
+    padding: 6px 15px;
+    margin-bottom: 5px;
+  }
+
+  .turn-counter {
+    margin-bottom: 3px;
+  }
+
+  .game-container {
+    padding: 8px;
+  }
+
+  .controls {
+    margin-top: 8px;
+  }
+
+  .btn {
+    padding: 8px 14px;
+  }
 }
 
 /* Animacions */

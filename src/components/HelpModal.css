@@ -1,0 +1,148 @@
+/* HelpModal.css */
+
+.help-modal {
+  max-width: 500px;
+}
+
+.help-modal h2 {
+  text-align: center;
+  color: #667eea;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.help-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.help-section {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.help-section:last-child {
+  border-bottom: none;
+  margin-bottom: 10px;
+}
+
+.help-section h3 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.help-section p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.help-section ul {
+  color: #555;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+/* Diagrama del cavall */
+.knight-diagram {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.diagram-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 35px);
+  grid-template-rows: repeat(5, 35px);
+  gap: 2px;
+  background: #333;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.diagram-cell {
+  background: #f5e6d3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.diagram-cell:nth-child(even) {
+  background: #b58863;
+}
+
+.diagram-cell.knight {
+  background: linear-gradient(145deg, #ffd700, #ffaa00) !important;
+  font-size: 1.5rem;
+}
+
+.diagram-cell.valid {
+  background: linear-gradient(145deg, #90EE90, #32CD32) !important;
+  color: white;
+}
+
+/* Llegenda de colors */
+.color-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.legend-color.green {
+  background: linear-gradient(145deg, #90EE90, #32CD32);
+}
+
+.legend-color.red {
+  background: linear-gradient(145deg, #ff6b6b, #ee5a5a);
+}
+
+.legend-color.blue {
+  background: linear-gradient(145deg, #a0c4e8, #7eb3e0);
+}
+
+.legend-color.gold {
+  background: linear-gradient(145deg, #ffd700, #ffaa00);
+}
+
+.help-modal .btn-primary {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .help-modal {
+    padding: 20px;
+  }
+
+  .help-modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .color-legend {
+    grid-template-columns: 1fr;
+  }
+
+  .diagram-grid {
+    grid-template-columns: repeat(5, 30px);
+    grid-template-rows: repeat(5, 30px);
+  }
+}
