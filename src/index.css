@@ -1,0 +1,65 @@
+/* index.css - Estils globals */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #213547;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Fonts per a nens - més arrodonides i amigables */
+h1, h2, h3 {
+  font-family: 'Comic Sans MS', 'Chalkboard', 'Marker Felt', cursive;
+}
+
+/* Scrollbar personalitzat */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(145deg, #5a67d8, #6b46c1);
+}
+
+/* Selecció de text */
+::selection {
+  background: #667eea;
+  color: white;
+}
+
+/* Focus visible per accessibilitat */
+:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}

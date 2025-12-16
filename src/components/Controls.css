@@ -1,0 +1,77 @@
+/* Controls.css */
+
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-undo {
+  background: linear-gradient(145deg, #ffa726, #fb8c00);
+  color: white;
+}
+
+.btn-undo:hover:not(:disabled) {
+  background: linear-gradient(145deg, #ffb74d, #ffa726);
+}
+
+.btn-restart {
+  background: linear-gradient(145deg, #42a5f5, #1e88e5);
+  color: white;
+}
+
+.btn-restart:hover {
+  background: linear-gradient(145deg, #64b5f6, #42a5f5);
+}
+
+.btn-ranking {
+  background: linear-gradient(145deg, #ab47bc, #8e24aa);
+  color: white;
+}
+
+.btn-ranking:hover {
+  background: linear-gradient(145deg, #ba68c8, #ab47bc);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .controls {
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 1rem;
+  }
+}
