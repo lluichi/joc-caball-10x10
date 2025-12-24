@@ -27,7 +27,7 @@ Un joc interactiu de taulell 10x10 on has de moure un cavall d'escacs visitant e
 ```bash
 # Clona el repositori
 git clone <url-del-repositori>
-cd joc-caball-10x10
+cd joc-cavall-10x10
 
 # Instal·la les dependències
 npm install
