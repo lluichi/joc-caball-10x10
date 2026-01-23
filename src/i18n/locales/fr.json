@@ -26,6 +26,7 @@
   "gameOver": {
     "title": "Fin de Partie !",
     "score": "Score :",
+    "time": "Temps :",
     "perfect": "INCROYABLE ! Vous avez compl\u00e9t\u00e9 tout le plateau !",
     "excellent": "Fantastique ! Presque parfait !",
     "great": "Tr\u00e8s bonne partie !",

@@ -44,6 +44,30 @@
   color: #999;
 }
 
+.time-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.time-display .time-icon {
+  font-size: 1.3rem;
+}
+
+.time-display .time-label {
+  color: #555;
+}
+
+.time-display .time-value {
+  font-weight: bold;
+  color: #667eea;
+  font-size: 1.4rem;
+}
+
 .score-message {
   font-size: 1.4rem;
   color: #444;

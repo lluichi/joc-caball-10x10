@@ -17,6 +17,7 @@ export async function obtenirRanking() {
     return data.map(entry => ({
       name: entry.nom,
       score: entry.puntuacio,
+      time: entry.temps || 0,
       date: entry.data,
     }))
   } catch (error) {
@@ -29,16 +30,17 @@ export async function obtenirRanking() {
  * Guarda un nou ranking a la base de dades
  * @param {string} nom - Nom del jugador
  * @param {number} puntuacio - Puntuació (1-100)
+ * @param {number} temps - Temps en segons
  * @returns {Promise<boolean>} - true si s'ha guardat correctament
  */
-export async function guardarRanking(nom, puntuacio) {
+export async function guardarRanking(nom, puntuacio, temps) {
   try {
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ nom, puntuacio }),
+      body: JSON.stringify({ nom, puntuacio, temps }),
     })
 
     if (!response.ok) {

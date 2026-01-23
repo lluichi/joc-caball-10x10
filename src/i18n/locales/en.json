@@ -26,6 +26,7 @@
   "gameOver": {
     "title": "Game Over!",
     "score": "Score:",
+    "time": "Time:",
     "perfect": "INCREDIBLE! You completed the entire board!",
     "excellent": "Fantastic! Almost perfect!",
     "great": "Very good game!",

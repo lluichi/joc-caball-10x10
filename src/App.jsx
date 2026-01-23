@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import Board from './components/Board'
 import Ranking from './components/Ranking'
@@ -27,6 +27,31 @@ function App() {
   const [history, setHistory] = useState([])
   const [menuOpen, setMenuOpen] = useState(false)
   const [message, setMessage] = useState(() => `🎯 ${t('game.clickToPlace')}`)
+  const [elapsedTime, setElapsedTime] = useState(0)
+  const [finalTime, setFinalTime] = useState(0)
+  const startTimeRef = useRef(null)
+  const timerRef = useRef(null)
+
+  // Gestionar el cronòmetre
+  useEffect(() => {
+    if (startTimeRef.current && !gameOver) {
+      timerRef.current = setInterval(() => {
+        setElapsedTime(Math.floor((Date.now() - startTimeRef.current) / 1000))
+      }, 1000)
+    }
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+      }
+    }
+  }, [gameOver, knightPosition])
+
+  // Formatar temps en mm:ss
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
 
   // Obtenir moviments vàlids des d'una posició
   const getValidMoves = useCallback((row, col, currentBoard) => {
@@ -61,7 +86,13 @@ function App() {
       setHistory([{ board: board.map(r => [...r]), position: null, turn: 0 }])
       setMessage(`🐴 ${t('game.moveKnight')}`)
 
+      // Iniciar cronòmetre
+      startTimeRef.current = Date.now()
+      setElapsedTime(0)
+
       if (checkGameOver(row, col, newBoard)) {
+        const time = Math.floor((Date.now() - startTimeRef.current) / 1000)
+        setFinalTime(time)
         setGameOver(true)
         setMessage(`🏁 ${t('game.gameEndSingle')}`)
       }
@@ -92,6 +123,11 @@ function App() {
     setMessage(`✨ ${t('game.turnMessage', { turn: newTurn })}`)
 
     if (checkGameOver(row, col, newBoard)) {
+      const time = Math.floor((Date.now() - startTimeRef.current) / 1000)
+      setFinalTime(time)
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+      }
       setGameOver(true)
       setMessage(`🏁 ${t('game.gameEnd', { moves: newTurn })}`)
     }
@@ -120,6 +156,13 @@ function App() {
     setInvalidMove(null)
     setMessage(`🎯 ${t('game.clickToPlace')}`)
     setMenuOpen(false)
+    // Reiniciar cronòmetre
+    if (timerRef.current) {
+      clearInterval(timerRef.current)
+    }
+    startTimeRef.current = null
+    setElapsedTime(0)
+    setFinalTime(0)
   }
 
   // Tancar modal de fi de joc
@@ -175,6 +218,13 @@ function App() {
           <span className="turn-label">{t('game.turn')}</span>
           <span className="turn-number">{turn}</span>
           <span className="max-score">{t('game.maxScore')}</span>
+          {knightPosition && (
+            <>
+              <span className="time-separator">|</span>
+              <span className="time-icon">⏱️</span>
+              <span className="time-value">{formatTime(elapsedTime)}</span>
+            </>
+          )}
         </div>
         <div className="message">{message}</div>
       </div>
@@ -209,6 +259,7 @@ function App() {
       {gameOver && (
         <GameOverModal
           score={turn}
+          time={finalTime}
           onClose={handleCloseModal}
           onRestart={handleRestart}
         />

@@ -26,6 +26,7 @@
   "gameOver": {
     "title": "Fim do Jogo!",
     "score": "Pontua\u00e7\u00e3o:",
+    "time": "Tempo:",
     "perfect": "INCR\u00cdVEL! Completou todo o tabuleiro!",
     "excellent": "Fant\u00e1stico! Quase perfeito!",
     "great": "Muito bom jogo!",

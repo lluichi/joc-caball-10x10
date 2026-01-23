@@ -26,6 +26,7 @@
   "gameOver": {
     "title": "Spiel beendet!",
     "score": "Punktzahl:",
+    "time": "Zeit:",
     "perfect": "UNGLAUBLICH! Sie haben das gesamte Brett geschafft!",
     "excellent": "Fantastisch! Fast perfekt!",
     "great": "Sehr gutes Spiel!",

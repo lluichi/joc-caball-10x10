@@ -167,6 +167,22 @@
   color: #999;
 }
 
+.time-separator {
+  color: #ccc;
+  margin: 0 8px;
+}
+
+.time-icon {
+  font-size: 1rem;
+}
+
+.time-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #667eea;
+  margin-left: 4px;
+}
+
 .message {
   font-size: 0.95rem;
   color: #444;

@@ -9,6 +9,14 @@ function Ranking({ onClose }) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  // Formatar temps en mm:ss
+  const formatTime = (seconds) => {
+    if (!seconds && seconds !== 0) return '-'
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
+
   useEffect(() => {
     const carregarRankings = async () => {
       setLoading(true)
@@ -50,6 +58,7 @@ function Ranking({ onClose }) {
                 <span className="ranking-position">{getMedal(index)}</span>
                 <span className="ranking-name">{entry.name}</span>
                 <span className="ranking-score">{t('ranking.moves', { count: entry.score })}</span>
+                <span className="ranking-time">⏱️ {formatTime(entry.time)}</span>
               </div>
             ))}
           </div>

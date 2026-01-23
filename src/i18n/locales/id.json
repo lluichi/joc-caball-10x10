@@ -26,6 +26,7 @@
   "gameOver": {
     "title": "Permainan Selesai!",
     "score": "Skor:",
+    "time": "Waktu:",
     "perfect": "LUAR BIASA! Anda menyelesaikan seluruh papan!",
     "excellent": "Fantastis! Hampir sempurna!",
     "great": "Permainan yang sangat bagus!",

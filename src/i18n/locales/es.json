@@ -26,6 +26,7 @@
   "gameOver": {
     "title": "\u00a1Fin de la Partida!",
     "score": "Puntuaci\u00f3n:",
+    "time": "Tiempo:",
     "perfect": "\u00a1INCRE\u00cdBLE! \u00a1Has completado todo el tablero!",
     "excellent": "\u00a1Fant\u00e1stico! \u00a1Casi perfecto!",
     "great": "\u00a1Muy buena partida!",

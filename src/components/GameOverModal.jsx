@@ -3,8 +3,15 @@ import { useTranslation } from 'react-i18next'
 import { obtenirRanking, guardarRanking } from '../utils/ranking'
 import './GameOverModal.css'
 
-function GameOverModal({ score, onClose, onRestart }) {
+function GameOverModal({ score, time, onClose, onRestart }) {
   const { t } = useTranslation()
+
+  // Formatar temps en mm:ss
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
   const [playerName, setPlayerName] = useState('')
   const [isTopPlayer, setIsTopPlayer] = useState(false)
   const [hasSaved, setHasSaved] = useState(false)
@@ -33,7 +40,7 @@ function GameOverModal({ score, onClose, onRestart }) {
     setSaving(true)
     setError(null)
 
-    const success = await guardarRanking(playerName.trim(), score)
+    const success = await guardarRanking(playerName.trim(), score, time)
 
     if (success) {
       setHasSaved(true)
@@ -62,6 +69,12 @@ function GameOverModal({ score, onClose, onRestart }) {
           <span className="score-label">{t('gameOver.score')}</span>
           <span className="score-value">{score}</span>
           <span className="score-max">/ 100</span>
+        </div>
+
+        <div className="time-display">
+          <span className="time-icon">⏱️</span>
+          <span className="time-label">{t('gameOver.time')}</span>
+          <span className="time-value">{formatTime(time)}</span>
         </div>
 
         <p className="score-message">{getMessage()}</p>
