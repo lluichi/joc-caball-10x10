@@ -26,7 +26,7 @@ function App() {
   const [invalidMove, setInvalidMove] = useState(null)
   const [history, setHistory] = useState([])
   const [menuOpen, setMenuOpen] = useState(false)
-  const [message, setMessage] = useState(() => `🎯 ${t('game.clickToPlace')}`)
+  const [messageKey, setMessageKey] = useState({ key: 'clickToPlace', params: {} })
   const [elapsedTime, setElapsedTime] = useState(0)
   const [finalTime, setFinalTime] = useState(0)
   const startTimeRef = useRef(null)
@@ -51,6 +51,21 @@ function App() {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
     return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
+
+  // Obtenir missatge traduït dinàmicament
+  const getMessage = () => {
+    const icons = {
+      clickToPlace: '🎯',
+      moveKnight: '🐴',
+      invalidMove: '❌',
+      turnMessage: '✨',
+      gameEndSingle: '🏁',
+      gameEnd: '🏁',
+      undone: '⏪'
+    }
+    const icon = icons[messageKey.key] || ''
+    return `${icon} ${t(`game.${messageKey.key}`, messageKey.params)}`
   }
 
   // Obtenir moviments vàlids des d'una posició
@@ -84,7 +99,7 @@ function App() {
       setKnightPosition([row, col])
       setTurn(1)
       setHistory([{ board: board.map(r => [...r]), position: null, turn: 0 }])
-      setMessage(`🐴 ${t('game.moveKnight')}`)
+      setMessageKey({ key: 'moveKnight', params: {} })
 
       // Iniciar cronòmetre
       startTimeRef.current = Date.now()
@@ -94,7 +109,7 @@ function App() {
         const time = Math.floor((Date.now() - startTimeRef.current) / 1000)
         setFinalTime(time)
         setGameOver(true)
-        setMessage(`🏁 ${t('game.gameEndSingle')}`)
+        setMessageKey({ key: 'gameEndSingle', params: {} })
       }
       return
     }
@@ -106,7 +121,7 @@ function App() {
 
     if (!isValidMove) {
       setInvalidMove([row, col])
-      setMessage(`❌ ${t('game.invalidMove')}`)
+      setMessageKey({ key: 'invalidMove', params: {} })
       setTimeout(() => setInvalidMove(null), 500)
       return
     }
@@ -120,7 +135,7 @@ function App() {
     setBoard(newBoard)
     setKnightPosition([row, col])
     setTurn(newTurn)
-    setMessage(`✨ ${t('game.turnMessage', { turn: newTurn })}`)
+    setMessageKey({ key: 'turnMessage', params: { turn: newTurn } })
 
     if (checkGameOver(row, col, newBoard)) {
       const time = Math.floor((Date.now() - startTimeRef.current) / 1000)
@@ -129,7 +144,7 @@ function App() {
         clearInterval(timerRef.current)
       }
       setGameOver(true)
-      setMessage(`🏁 ${t('game.gameEnd', { moves: newTurn })}`)
+      setMessageKey({ key: 'gameEnd', params: { moves: newTurn } })
     }
   }
 
@@ -142,7 +157,7 @@ function App() {
     setKnightPosition(lastState.position)
     setTurn(lastState.turn)
     setHistory(history.slice(0, -1))
-    setMessage(lastState.position ? `⏪ ${t('game.undone')}` : `🎯 ${t('game.clickToPlace')}`)
+    setMessageKey(lastState.position ? { key: 'undone', params: {} } : { key: 'clickToPlace', params: {} })
     setMenuOpen(false)
   }
 
@@ -154,7 +169,7 @@ function App() {
     setGameOver(false)
     setHistory([])
     setInvalidMove(null)
-    setMessage(`🎯 ${t('game.clickToPlace')}`)
+    setMessageKey({ key: 'clickToPlace', params: {} })
     setMenuOpen(false)
     // Reiniciar cronòmetre
     if (timerRef.current) {
@@ -226,7 +241,7 @@ function App() {
             </>
           )}
         </div>
-        <div className="message">{message}</div>
+        <div className="message">{getMessage()}</div>
       </div>
 
       <div className="game-container">
