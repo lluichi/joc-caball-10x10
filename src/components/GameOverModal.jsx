@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { obtenirRanking, guardarRanking } from '../utils/ranking'
 import './GameOverModal.css'
 
 function GameOverModal({ score, onClose, onRestart }) {
@@ -6,37 +7,39 @@ function GameOverModal({ score, onClose, onRestart }) {
   const [isTopPlayer, setIsTopPlayer] = useState(false)
   const [hasSaved, setHasSaved] = useState(false)
   const [position, setPosition] = useState(null)
+  const [saving, setSaving] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    const savedRankings = localStorage.getItem('knightTourRankings')
-    const rankings = savedRankings ? JSON.parse(savedRankings) : []
+    const comprovarPosicio = async () => {
+      const rankings = await obtenirRanking()
 
-    // Comprovar si el jugador està entre els 10 millors
-    if (rankings.length < 10 || score > rankings[rankings.length - 1].score) {
-      setIsTopPlayer(true)
-      // Calcular la posició
-      const pos = rankings.findIndex(r => score > r.score)
-      setPosition(pos === -1 ? rankings.length + 1 : pos + 1)
+      // Comprovar si el jugador està entre els 100 millors
+      if (rankings.length < 100 || score > rankings[rankings.length - 1].score) {
+        setIsTopPlayer(true)
+        // Calcular la posició
+        const pos = rankings.findIndex(r => score > r.score)
+        setPosition(pos === -1 ? rankings.length + 1 : pos + 1)
+      }
     }
+    comprovarPosicio()
   }, [score])
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!playerName.trim()) return
 
-    const savedRankings = localStorage.getItem('knightTourRankings')
-    let rankings = savedRankings ? JSON.parse(savedRankings) : []
+    setSaving(true)
+    setError(null)
 
-    // Afegir nova puntuació
-    rankings.push({ name: playerName.trim(), score, date: new Date().toISOString() })
+    const success = await guardarRanking(playerName.trim(), score)
 
-    // Ordenar per puntuació (més alta primer)
-    rankings.sort((a, b) => b.score - a.score)
+    if (success) {
+      setHasSaved(true)
+    } else {
+      setError('Error guardant la puntuació. Torna-ho a provar.')
+    }
 
-    // Mantenir només els 10 millors
-    rankings = rankings.slice(0, 10)
-
-    localStorage.setItem('knightTourRankings', JSON.stringify(rankings))
-    setHasSaved(true)
+    setSaving(false)
   }
 
   const getMessage = () => {
@@ -64,7 +67,7 @@ function GameOverModal({ score, onClose, onRestart }) {
         {isTopPlayer && !hasSaved && (
           <div className="top-player-section">
             <p className="congrats">
-              🎊 Felicitats! Estàs en el TOP 10! 🎊
+              🎊 Felicitats! Estàs en el TOP 100! 🎊
               <br />
               <span className="position-text">Posició: {position}è</span>
             </p>
@@ -77,15 +80,17 @@ function GameOverModal({ score, onClose, onRestart }) {
                 onChange={(e) => setPlayerName(e.target.value)}
                 maxLength={20}
                 autoFocus
+                disabled={saving}
               />
               <button
                 className="btn btn-save"
                 onClick={handleSave}
-                disabled={!playerName.trim()}
+                disabled={!playerName.trim() || saving}
               >
-                💾 Guardar
+                {saving ? '⏳ Guardant...' : '💾 Guardar'}
               </button>
             </div>
+            {error && <p className="error-message">{error}</p>}
           </div>
         )}
 

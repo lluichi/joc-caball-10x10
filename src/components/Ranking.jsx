@@ -1,22 +1,27 @@
 import { useState, useEffect } from 'react'
+import { obtenirRanking } from '../utils/ranking'
 import './Ranking.css'
 
 function Ranking({ onClose }) {
   const [rankings, setRankings] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    const savedRankings = localStorage.getItem('knightTourRankings')
-    if (savedRankings) {
-      setRankings(JSON.parse(savedRankings))
+    const carregarRankings = async () => {
+      setLoading(true)
+      setError(null)
+      try {
+        const data = await obtenirRanking()
+        setRankings(data)
+      } catch {
+        setError('Error carregant els rankings')
+      } finally {
+        setLoading(false)
+      }
     }
+    carregarRankings()
   }, [])
-
-  const clearRankings = () => {
-    if (window.confirm('Segur que vols esborrar tot el rànquing?')) {
-      localStorage.removeItem('knightTourRankings')
-      setRankings([])
-    }
-  }
 
   const getMedal = (index) => {
     if (index === 0) return '🥇'
@@ -30,7 +35,11 @@ function Ranking({ onClose }) {
       <div className="modal ranking-modal" onClick={e => e.stopPropagation()}>
         <h2>🏆 Millors Jugadors 🏆</h2>
 
-        {rankings.length === 0 ? (
+        {loading ? (
+          <p className="loading-rankings">Carregant...</p>
+        ) : error ? (
+          <p className="error-rankings">{error}</p>
+        ) : rankings.length === 0 ? (
           <p className="no-rankings">Encara no hi ha puntuacions!</p>
         ) : (
           <div className="ranking-list">
@@ -45,11 +54,6 @@ function Ranking({ onClose }) {
         )}
 
         <div className="modal-buttons">
-          {rankings.length > 0 && (
-            <button className="btn btn-danger" onClick={clearRankings}>
-              🗑️ Esborrar Rànquing
-            </button>
-          )}
           <button className="btn btn-primary" onClick={onClose}>
             Tancar
           </button>
