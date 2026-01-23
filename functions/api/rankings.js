@@ -1,13 +1,13 @@
 // API Cloudflare Pages Functions per als rankings
 // GET /api/rankings - Retorna TOP 100 rankings
-// POST /api/rankings - Guarda un nou ranking { nom, puntuacio }
+// POST /api/rankings - Guarda un nou ranking { nom, puntuacio, temps }
 
 export async function onRequestGet(context) {
   const { env } = context
 
   try {
     const { results } = await env.DB.prepare(
-      'SELECT nom, puntuacio, data FROM rankings ORDER BY puntuacio DESC LIMIT 100'
+      'SELECT nom, puntuacio, temps, data FROM rankings ORDER BY puntuacio DESC, temps ASC LIMIT 100'
     ).all()
 
     return Response.json(results, {
@@ -29,7 +29,7 @@ export async function onRequestPost(context) {
   const { env, request } = context
 
   try {
-    const { nom, puntuacio } = await request.json()
+    const { nom, puntuacio, temps } = await request.json()
 
     // Validacions
     if (!nom || typeof nom !== 'string' || nom.trim().length === 0) {
@@ -50,11 +50,14 @@ export async function onRequestPost(context) {
       })
     }
 
+    // Temps en segons (opcional, per defecte 0)
+    const tempsNet = typeof temps === 'number' && temps >= 0 ? Math.floor(temps) : 0
+
     const nomNet = nom.trim().slice(0, 50)
 
     await env.DB.prepare(
-      'INSERT INTO rankings (nom, puntuacio) VALUES (?, ?)'
-    ).bind(nomNet, puntuacio).run()
+      'INSERT INTO rankings (nom, puntuacio, temps) VALUES (?, ?, ?)'
+    ).bind(nomNet, puntuacio, tempsNet).run()
 
     return Response.json({ success: true }, {
       headers: {
