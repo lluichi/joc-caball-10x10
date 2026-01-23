@@ -2,11 +2,22 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import './LanguageSelector.css'
 
-// Funció per guardar cookie fora del component
+// Funció per guardar cookie al domini pare (.trumfic.com)
 function setCookie(name, value, days) {
   const expires = new Date()
   expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000)
-  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`
+
+  // Determinar el domini pare per compartir la cookie entre subdominis
+  const hostname = window.location.hostname
+  let domain = ''
+
+  // Si estem a trumfic.com o subdomini, usar .trumfic.com
+  if (hostname.includes('trumfic.com')) {
+    domain = ';domain=.trumfic.com'
+  }
+  // Per localhost o altres dominis, no especifiquem domain
+
+  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/${domain}`
 }
 
 const languages = [
