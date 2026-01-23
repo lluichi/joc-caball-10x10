@@ -1,0 +1,64 @@
+{
+  "game": {
+    "title": "La Promenade du Cavalier",
+    "clickToPlace": "Cliquez sur une case pour placer le cavalier !",
+    "moveKnight": "D\u00e9placez le cavalier en L !",
+    "invalidMove": "Mouvement invalide !",
+    "turnMessage": "Tour {{turn}} - Tr\u00e8s bien !",
+    "gameEndSingle": "Partie termin\u00e9e ! 1 mouvement.",
+    "gameEnd": "Fini ! {{moves}} mouvements.",
+    "undone": "Annul\u00e9 !",
+    "turn": "Tour :",
+    "maxScore": "/ 100"
+  },
+  "buttons": {
+    "undo": "Annuler",
+    "restart": "Recommencer",
+    "howToPlay": "Comment jouer",
+    "ranking": "Classement",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "close": "Fermer",
+    "playAgain": "Rejouer",
+    "exit": "Quitter",
+    "understood": "Compris !"
+  },
+  "gameOver": {
+    "title": "Fin de Partie !",
+    "score": "Score :",
+    "perfect": "INCROYABLE ! Vous avez compl\u00e9t\u00e9 tout le plateau !",
+    "excellent": "Fantastique ! Presque parfait !",
+    "great": "Tr\u00e8s bonne partie !",
+    "good": "Bien ! Vous pouvez faire mieux !",
+    "ok": "Pas mal !",
+    "keepTrying": "Continuez \u00e0 pratiquer !",
+    "topPlayer": "F\u00e9licitations ! Vous \u00eates dans le TOP 100 !",
+    "position": "Position : {{position}}\u00e8me",
+    "enterName": "Entrez votre nom...",
+    "saved": "Score enregistr\u00e9 !",
+    "saveError": "Erreur lors de l'enregistrement. R\u00e9essayez."
+  },
+  "ranking": {
+    "title": "Meilleurs Joueurs",
+    "loading": "Chargement...",
+    "loadError": "Erreur de chargement du classement",
+    "empty": "Pas encore de scores !",
+    "moves": "{{count}} mouvements"
+  },
+  "help": {
+    "title": "Comment Jouer",
+    "objective": "Objectif",
+    "objectiveText": "Visitez le plus grand nombre de cases possible en d\u00e9pla\u00e7ant le cavalier sans r\u00e9p\u00e9ter aucune case.",
+    "movement": "Mouvement du Cavalier",
+    "movementText": "Le cavalier se d\u00e9place en forme de L :",
+    "movementOption1": "2 cases dans une direction + 1 case perpendiculaire",
+    "movementOption2": "Ou 1 case dans une direction + 2 cases perpendiculaires",
+    "colors": "Couleurs",
+    "validMoves": "Mouvements valides",
+    "invalidMove": "Mouvement invalide",
+    "visitedCells": "Cases visit\u00e9es",
+    "knightPosition": "Position du cavalier",
+    "scoring": "Score",
+    "scoringText": "Le score est le nombre de cases visit\u00e9es. Le maximum est 100 (toutes les cases !)."
+  }
+}

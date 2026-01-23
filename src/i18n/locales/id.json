@@ -1,0 +1,64 @@
+{
+  "game": {
+    "title": "Tur Kuda",
+    "clickToPlace": "Klik kotak untuk menempatkan kuda!",
+    "moveKnight": "Gerakkan kuda dengan bentuk L!",
+    "invalidMove": "Gerakan tidak valid!",
+    "turnMessage": "Giliran {{turn}} - Bagus!",
+    "gameEndSingle": "Permainan selesai! 1 gerakan.",
+    "gameEnd": "Selesai! {{moves}} gerakan.",
+    "undone": "Dibatalkan!",
+    "turn": "Giliran:",
+    "maxScore": "/ 100"
+  },
+  "buttons": {
+    "undo": "Batalkan",
+    "restart": "Mulai Ulang",
+    "howToPlay": "Cara Bermain",
+    "ranking": "Peringkat",
+    "save": "Simpan",
+    "saving": "Menyimpan...",
+    "close": "Tutup",
+    "playAgain": "Main Lagi",
+    "exit": "Keluar",
+    "understood": "Mengerti!"
+  },
+  "gameOver": {
+    "title": "Permainan Selesai!",
+    "score": "Skor:",
+    "perfect": "LUAR BIASA! Anda menyelesaikan seluruh papan!",
+    "excellent": "Fantastis! Hampir sempurna!",
+    "great": "Permainan yang sangat bagus!",
+    "good": "Bagus! Anda bisa lebih baik!",
+    "ok": "Tidak buruk!",
+    "keepTrying": "Terus berlatih!",
+    "topPlayer": "Selamat! Anda masuk TOP 100!",
+    "position": "Posisi: {{position}}",
+    "enterName": "Masukkan nama Anda...",
+    "saved": "Skor tersimpan!",
+    "saveError": "Gagal menyimpan. Coba lagi."
+  },
+  "ranking": {
+    "title": "Pemain Terbaik",
+    "loading": "Memuat...",
+    "loadError": "Gagal memuat peringkat",
+    "empty": "Belum ada skor!",
+    "moves": "{{count}} gerakan"
+  },
+  "help": {
+    "title": "Cara Bermain",
+    "objective": "Tujuan",
+    "objectiveText": "Kunjungi sebanyak mungkin kotak dengan menggerakkan kuda tanpa mengulangi kotak manapun.",
+    "movement": "Gerakan Kuda",
+    "movementText": "Kuda bergerak dengan bentuk L:",
+    "movementOption1": "2 kotak dalam satu arah + 1 kotak tegak lurus",
+    "movementOption2": "Atau 1 kotak dalam satu arah + 2 kotak tegak lurus",
+    "colors": "Warna",
+    "validMoves": "Gerakan valid",
+    "invalidMove": "Gerakan tidak valid",
+    "visitedCells": "Kotak yang dikunjungi",
+    "knightPosition": "Posisi kuda",
+    "scoring": "Penilaian",
+    "scoringText": "Skor adalah jumlah kotak yang dikunjungi. Maksimum 100 (semua kotak!)."
+  }
+}

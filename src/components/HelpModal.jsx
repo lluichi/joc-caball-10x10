@@ -1,23 +1,26 @@
+import { useTranslation } from 'react-i18next'
 import './HelpModal.css'
 
 function HelpModal({ onClose }) {
+  const { t } = useTranslation()
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal help-modal" onClick={e => e.stopPropagation()}>
-        <h2>ℹ️ Com Jugar</h2>
+        <h2>ℹ️ {t('help.title')}</h2>
 
         <div className="help-content">
           <div className="help-section">
-            <h3>🎯 Objectiu</h3>
-            <p>Visita el màxim nombre de caselles movent el cavall sense repetir cap casella.</p>
+            <h3>🎯 {t('help.objective')}</h3>
+            <p>{t('help.objectiveText')}</p>
           </div>
 
           <div className="help-section">
-            <h3>🐴 Moviment del Cavall</h3>
-            <p>El cavall es mou en forma de <strong>L</strong>:</p>
+            <h3>🐴 {t('help.movement')}</h3>
+            <p>{t('help.movementText')}</p>
             <ul>
-              <li>2 caselles en una direcció + 1 casella perpendicular</li>
-              <li>O 1 casella en una direcció + 2 caselles perpendiculars</li>
+              <li>{t('help.movementOption1')}</li>
+              <li>{t('help.movementOption2')}</li>
             </ul>
             <div className="knight-diagram">
               <div className="diagram-grid">
@@ -46,35 +49,35 @@ function HelpModal({ onClose }) {
           </div>
 
           <div className="help-section">
-            <h3>🎨 Colors</h3>
+            <h3>🎨 {t('help.colors')}</h3>
             <div className="color-legend">
               <div className="legend-item">
                 <span className="legend-color green"></span>
-                <span>Moviments vàlids</span>
+                <span>{t('help.validMoves')}</span>
               </div>
               <div className="legend-item">
                 <span className="legend-color red"></span>
-                <span>Moviment invàlid</span>
+                <span>{t('help.invalidMove')}</span>
               </div>
               <div className="legend-item">
                 <span className="legend-color blue"></span>
-                <span>Caselles visitades</span>
+                <span>{t('help.visitedCells')}</span>
               </div>
               <div className="legend-item">
                 <span className="legend-color gold"></span>
-                <span>Posició del cavall</span>
+                <span>{t('help.knightPosition')}</span>
               </div>
             </div>
           </div>
 
           <div className="help-section">
-            <h3>🏆 Puntuació</h3>
-            <p>La puntuació és el nombre de caselles visitades. El màxim és <strong>100</strong> (totes les caselles!).</p>
+            <h3>🏆 {t('help.scoring')}</h3>
+            <p>{t('help.scoringText')}</p>
           </div>
         </div>
 
         <button className="btn btn-primary" onClick={onClose}>
-          Entesos! 👍
+          {t('buttons.understood')} 👍
         </button>
       </div>
     </div>

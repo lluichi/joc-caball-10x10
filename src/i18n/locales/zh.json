@@ -1,0 +1,64 @@
+{
+  "game": {
+    "title": "\u9a91\u58eb\u5de1\u6e38",
+    "clickToPlace": "\u70b9\u51fb\u65b9\u683c\u653e\u7f6e\u9a91\u58eb\uff01",
+    "moveKnight": "\u4ee5L\u5f62\u79fb\u52a8\u9a91\u58eb\uff01",
+    "invalidMove": "\u65e0\u6548\u79fb\u52a8\uff01",
+    "turnMessage": "\u7b2c {{turn}} \u6b65 - \u505a\u5f97\u597d\uff01",
+    "gameEndSingle": "\u6e38\u620f\u7ed3\u675f\uff011\u6b65\u3002",
+    "gameEnd": "\u5b8c\u6210\uff01{{moves}} \u6b65\u3002",
+    "undone": "\u5df2\u64a4\u9500\uff01",
+    "turn": "\u6b65\u6570\uff1a",
+    "maxScore": "/ 100"
+  },
+  "buttons": {
+    "undo": "\u64a4\u9500",
+    "restart": "\u91cd\u65b0\u5f00\u59cb",
+    "howToPlay": "\u5982\u4f55\u73a9",
+    "ranking": "\u6392\u884c\u699c",
+    "save": "\u4fdd\u5b58",
+    "saving": "\u4fdd\u5b58\u4e2d...",
+    "close": "\u5173\u95ed",
+    "playAgain": "\u518d\u73a9\u4e00\u6b21",
+    "exit": "\u9000\u51fa",
+    "understood": "\u77e5\u9053\u4e86\uff01"
+  },
+  "gameOver": {
+    "title": "\u6e38\u620f\u7ed3\u675f\uff01",
+    "score": "\u5f97\u5206\uff1a",
+    "perfect": "\u96be\u4ee5\u7f6e\u4fe1\uff01\u60a8\u5b8c\u6210\u4e86\u6574\u4e2a\u68cb\u76d8\uff01",
+    "excellent": "\u592a\u68d2\u4e86\uff01\u51e0\u4e4e\u5b8c\u7f8e\uff01",
+    "great": "\u975e\u5e38\u597d\u7684\u6e38\u620f\uff01",
+    "good": "\u4e0d\u9519\uff01\u53ef\u4ee5\u66f4\u597d\uff01",
+    "ok": "\u8fd8\u884c\uff01",
+    "keepTrying": "\u7ee7\u7eed\u52a0\u6cb9\uff01",
+    "topPlayer": "\u606d\u559c\uff01\u60a8\u8fdb\u5165\u4e86\u524d100\u540d\uff01",
+    "position": "\u6392\u540d\uff1a\u7b2c {{position}} \u540d",
+    "enterName": "\u8f93\u5165\u60a8\u7684\u540d\u5b57...",
+    "saved": "\u5f97\u5206\u5df2\u4fdd\u5b58\uff01",
+    "saveError": "\u4fdd\u5b58\u5931\u8d25\u3002\u8bf7\u91cd\u8bd5\u3002"
+  },
+  "ranking": {
+    "title": "\u6700\u4f73\u73a9\u5bb6",
+    "loading": "\u52a0\u8f7d\u4e2d...",
+    "loadError": "\u52a0\u8f7d\u6392\u884c\u699c\u5931\u8d25",
+    "empty": "\u6682\u65e0\u5f97\u5206\uff01",
+    "moves": "{{count}} \u6b65"
+  },
+  "help": {
+    "title": "\u5982\u4f55\u73a9",
+    "objective": "\u76ee\u6807",
+    "objectiveText": "\u79fb\u52a8\u9a91\u58eb\u8bbf\u95ee\u5c3d\u53ef\u80fd\u591a\u7684\u65b9\u683c\uff0c\u4e0d\u80fd\u91cd\u590d\u8bbf\u95ee\u4efb\u4f55\u65b9\u683c\u3002",
+    "movement": "\u9a91\u58eb\u79fb\u52a8",
+    "movementText": "\u9a91\u58eb\u4ee5L\u5f62\u79fb\u52a8\uff1a",
+    "movementOption1": "\u4e00\u4e2a\u65b9\u5411\u79fb\u52a82\u683c + \u5782\u76f4\u65b9\u5411\u79fb\u52a81\u683c",
+    "movementOption2": "\u6216\u4e00\u4e2a\u65b9\u5411\u79fb\u52a81\u683c + \u5782\u76f4\u65b9\u5411\u79fb\u52a82\u683c",
+    "colors": "\u989c\u8272",
+    "validMoves": "\u6709\u6548\u79fb\u52a8",
+    "invalidMove": "\u65e0\u6548\u79fb\u52a8",
+    "visitedCells": "\u5df2\u8bbf\u95ee\u65b9\u683c",
+    "knightPosition": "\u9a91\u58eb\u4f4d\u7f6e",
+    "scoring": "\u5f97\u5206",
+    "scoringText": "\u5f97\u5206\u662f\u8bbf\u95ee\u7684\u65b9\u683c\u6570\u3002\u6700\u9ad8100\u5206\uff08\u6240\u6709\u65b9\u683c\uff01\uff09\u3002"
+  }
+}

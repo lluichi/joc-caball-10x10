@@ -1,8 +1,10 @@
 import { useState, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import Board from './components/Board'
 import Ranking from './components/Ranking'
 import GameOverModal from './components/GameOverModal'
 import HelpModal from './components/HelpModal'
+import LanguageSelector from './components/LanguageSelector'
 import './App.css'
 
 // Moviments possibles del cavall (en forma de L)
@@ -14,6 +16,7 @@ const KNIGHT_MOVES = [
 const BOARD_SIZE = 10
 
 function App() {
+  const { t } = useTranslation()
   const [board, setBoard] = useState(Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0)))
   const [knightPosition, setKnightPosition] = useState(null)
   const [turn, setTurn] = useState(0)
@@ -23,7 +26,7 @@ function App() {
   const [invalidMove, setInvalidMove] = useState(null)
   const [history, setHistory] = useState([])
   const [menuOpen, setMenuOpen] = useState(false)
-  const [message, setMessage] = useState("🎯 Clica una casella per col·locar el cavall!")
+  const [message, setMessage] = useState(() => `🎯 ${t('game.clickToPlace')}`)
 
   // Obtenir moviments vàlids des d'una posició
   const getValidMoves = useCallback((row, col, currentBoard) => {
@@ -56,11 +59,11 @@ function App() {
       setKnightPosition([row, col])
       setTurn(1)
       setHistory([{ board: board.map(r => [...r]), position: null, turn: 0 }])
-      setMessage("🐴 Mou el cavall en L!")
+      setMessage(`🐴 ${t('game.moveKnight')}`)
 
       if (checkGameOver(row, col, newBoard)) {
         setGameOver(true)
-        setMessage("🏁 Joc acabat! 1 moviment.")
+        setMessage(`🏁 ${t('game.gameEndSingle')}`)
       }
       return
     }
@@ -72,7 +75,7 @@ function App() {
 
     if (!isValidMove) {
       setInvalidMove([row, col])
-      setMessage("❌ Moviment no vàlid!")
+      setMessage(`❌ ${t('game.invalidMove')}`)
       setTimeout(() => setInvalidMove(null), 500)
       return
     }
@@ -86,11 +89,11 @@ function App() {
     setBoard(newBoard)
     setKnightPosition([row, col])
     setTurn(newTurn)
-    setMessage(`✨ Torn ${newTurn} - Molt bé!`)
+    setMessage(`✨ ${t('game.turnMessage', { turn: newTurn })}`)
 
     if (checkGameOver(row, col, newBoard)) {
       setGameOver(true)
-      setMessage(`🏁 Fi! ${newTurn} moviments.`)
+      setMessage(`🏁 ${t('game.gameEnd', { moves: newTurn })}`)
     }
   }
 
@@ -103,7 +106,7 @@ function App() {
     setKnightPosition(lastState.position)
     setTurn(lastState.turn)
     setHistory(history.slice(0, -1))
-    setMessage(lastState.position ? `⏪ Desfet!` : "🎯 Clica per col·locar el cavall!")
+    setMessage(lastState.position ? `⏪ ${t('game.undone')}` : `🎯 ${t('game.clickToPlace')}`)
     setMenuOpen(false)
   }
 
@@ -115,7 +118,7 @@ function App() {
     setGameOver(false)
     setHistory([])
     setInvalidMove(null)
-    setMessage("🎯 Clica una casella per col·locar el cavall!")
+    setMessage(`🎯 ${t('game.clickToPlace')}`)
     setMenuOpen(false)
   }
 
@@ -132,16 +135,11 @@ function App() {
     <div className="app">
       <header className="header">
         <div className="header-content">
-          <h1>🐴 El Passeig del Cavall</h1>
+          <h1>🐴 {t('game.title')}</h1>
 
-          {/* Botons desktop */}
+          {/* Selector d'idioma desktop */}
           <div className="header-buttons desktop-only">
-            <button className="btn btn-small btn-help" onClick={() => setShowHelp(true)}>
-              ❓
-            </button>
-            <button className="btn btn-small btn-ranking" onClick={() => setShowRanking(true)}>
-              🏆
-            </button>
+            <LanguageSelector />
           </div>
 
           {/* Menú hamburguesa mòbil */}
@@ -153,17 +151,20 @@ function App() {
         {/* Menú desplegable mòbil */}
         {menuOpen && (
           <div className="mobile-menu">
+            <div className="mobile-menu-language">
+              <LanguageSelector />
+            </div>
             <button onClick={() => { setShowHelp(true); setMenuOpen(false); }}>
-              ❓ Com jugar
+              ❓ {t('buttons.howToPlay')}
             </button>
             <button onClick={() => { setShowRanking(true); setMenuOpen(false); }}>
-              🏆 Rànquing
+              🏆 {t('buttons.ranking')}
             </button>
             <button onClick={handleUndo} disabled={!canUndo}>
-              ⏪ Desfer
+              ⏪ {t('buttons.undo')}
             </button>
             <button onClick={handleRestart}>
-              🔄 Reiniciar
+              🔄 {t('buttons.restart')}
             </button>
           </div>
         )}
@@ -171,9 +172,9 @@ function App() {
 
       <div className="game-info">
         <div className="turn-counter">
-          <span className="turn-label">Torn:</span>
+          <span className="turn-label">{t('game.turn')}</span>
           <span className="turn-number">{turn}</span>
-          <span className="max-score">/ 100</span>
+          <span className="max-score">{t('game.maxScore')}</span>
         </div>
         <div className="message">{message}</div>
       </div>
@@ -192,16 +193,16 @@ function App() {
       {/* Controls desktop */}
       <div className="controls desktop-only">
         <button className="btn btn-undo" onClick={handleUndo} disabled={!canUndo}>
-          ⏪ Desfer
+          ⏪ {t('buttons.undo')}
         </button>
         <button className="btn btn-restart" onClick={handleRestart}>
-          🔄 Reiniciar
+          🔄 {t('buttons.restart')}
         </button>
         <button className="btn btn-help" onClick={() => setShowHelp(true)}>
-          ❓ Com jugar
+          ❓ {t('buttons.howToPlay')}
         </button>
         <button className="btn btn-ranking" onClick={() => setShowRanking(true)}>
-          🏆 Rànquing
+          🏆 {t('buttons.ranking')}
         </button>
       </div>
 

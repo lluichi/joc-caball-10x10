@@ -1,0 +1,64 @@
+{
+  "game": {
+    "title": "El Paseo del Caballo",
+    "clickToPlace": "\u00a1Haz clic en una casilla para colocar el caballo!",
+    "moveKnight": "\u00a1Mueve el caballo en L!",
+    "invalidMove": "\u00a1Movimiento no v\u00e1lido!",
+    "turnMessage": "Turno {{turn}} - \u00a1Muy bien!",
+    "gameEndSingle": "\u00a1Juego terminado! 1 movimiento.",
+    "gameEnd": "\u00a1Fin! {{moves}} movimientos.",
+    "undone": "\u00a1Deshecho!",
+    "turn": "Turno:",
+    "maxScore": "/ 100"
+  },
+  "buttons": {
+    "undo": "Deshacer",
+    "restart": "Reiniciar",
+    "howToPlay": "C\u00f3mo jugar",
+    "ranking": "Ranking",
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "close": "Cerrar",
+    "playAgain": "Volver a Jugar",
+    "exit": "Salir",
+    "understood": "\u00a1Entendido!"
+  },
+  "gameOver": {
+    "title": "\u00a1Fin de la Partida!",
+    "score": "Puntuaci\u00f3n:",
+    "perfect": "\u00a1INCRE\u00cdBLE! \u00a1Has completado todo el tablero!",
+    "excellent": "\u00a1Fant\u00e1stico! \u00a1Casi perfecto!",
+    "great": "\u00a1Muy buena partida!",
+    "good": "\u00a1Bien! \u00a1Puedes mejorar!",
+    "ok": "\u00a1No est\u00e1 mal!",
+    "keepTrying": "\u00a1Sigue practicando!",
+    "topPlayer": "\u00a1Felicidades! \u00a1Est\u00e1s en el TOP 100!",
+    "position": "Posici\u00f3n: {{position}}\u00ba",
+    "enterName": "Escribe tu nombre...",
+    "saved": "\u00a1Puntuaci\u00f3n guardada!",
+    "saveError": "Error guardando la puntuaci\u00f3n. Int\u00e9ntalo de nuevo."
+  },
+  "ranking": {
+    "title": "Mejores Jugadores",
+    "loading": "Cargando...",
+    "loadError": "Error cargando los rankings",
+    "empty": "\u00a1A\u00fan no hay puntuaciones!",
+    "moves": "{{count}} movimientos"
+  },
+  "help": {
+    "title": "C\u00f3mo Jugar",
+    "objective": "Objetivo",
+    "objectiveText": "Visita el m\u00e1ximo n\u00famero de casillas moviendo el caballo sin repetir ninguna casilla.",
+    "movement": "Movimiento del Caballo",
+    "movementText": "El caballo se mueve en forma de L:",
+    "movementOption1": "2 casillas en una direcci\u00f3n + 1 casilla perpendicular",
+    "movementOption2": "O 1 casilla en una direcci\u00f3n + 2 casillas perpendiculares",
+    "colors": "Colores",
+    "validMoves": "Movimientos v\u00e1lidos",
+    "invalidMove": "Movimiento inv\u00e1lido",
+    "visitedCells": "Casillas visitadas",
+    "knightPosition": "Posici\u00f3n del caballo",
+    "scoring": "Puntuaci\u00f3n",
+    "scoringText": "La puntuaci\u00f3n es el n\u00famero de casillas visitadas. El m\u00e1ximo es 100 (\u00a1todas las casillas!)."
+  }
+}

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { obtenirRanking } from '../utils/ranking'
 import './Ranking.css'
 
 function Ranking({ onClose }) {
+  const { t } = useTranslation()
   const [rankings, setRankings] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -15,13 +17,13 @@ function Ranking({ onClose }) {
         const data = await obtenirRanking()
         setRankings(data)
       } catch {
-        setError('Error carregant els rankings')
+        setError(t('ranking.loadError'))
       } finally {
         setLoading(false)
       }
     }
     carregarRankings()
-  }, [])
+  }, [t])
 
   const getMedal = (index) => {
     if (index === 0) return '🥇'
@@ -33,21 +35,21 @@ function Ranking({ onClose }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal ranking-modal" onClick={e => e.stopPropagation()}>
-        <h2>🏆 Millors Jugadors 🏆</h2>
+        <h2>🏆 {t('ranking.title')} 🏆</h2>
 
         {loading ? (
-          <p className="loading-rankings">Carregant...</p>
+          <p className="loading-rankings">{t('ranking.loading')}</p>
         ) : error ? (
           <p className="error-rankings">{error}</p>
         ) : rankings.length === 0 ? (
-          <p className="no-rankings">Encara no hi ha puntuacions!</p>
+          <p className="no-rankings">{t('ranking.empty')}</p>
         ) : (
           <div className="ranking-list">
             {rankings.map((entry, index) => (
               <div key={index} className={`ranking-entry ${index < 3 ? 'top-three' : ''}`}>
                 <span className="ranking-position">{getMedal(index)}</span>
                 <span className="ranking-name">{entry.name}</span>
-                <span className="ranking-score">{entry.score} moviments</span>
+                <span className="ranking-score">{t('ranking.moves', { count: entry.score })}</span>
               </div>
             ))}
           </div>
@@ -55,7 +57,7 @@ function Ranking({ onClose }) {
 
         <div className="modal-buttons">
           <button className="btn btn-primary" onClick={onClose}>
-            Tancar
+            {t('buttons.close')}
           </button>
         </div>
       </div>

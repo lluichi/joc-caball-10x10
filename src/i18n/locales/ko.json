@@ -1,0 +1,64 @@
+{
+  "game": {
+    "title": "\ub098\uc774\ud2b8 \ud22c\uc5b4",
+    "clickToPlace": "\uce78\uc744 \ud074\ub9ad\ud558\uc5ec \ub098\uc774\ud2b8\ub97c \ub193\uc73c\uc138\uc694!",
+    "moveKnight": "L\uc790 \ubaa8\uc591\uc73c\ub85c \ub098\uc774\ud2b8\ub97c \uc774\ub3d9\ud558\uc138\uc694!",
+    "invalidMove": "\uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uc774\ub3d9!",
+    "turnMessage": "\ud134 {{turn}} - \uc798\ud588\uc5b4\uc694!",
+    "gameEndSingle": "\uac8c\uc784 \uc885\ub8cc! 1\uc218.",
+    "gameEnd": "\uc644\ub8cc! {{moves}}\uc218.",
+    "undone": "\ucde8\uc18c\ub428!",
+    "turn": "\ud134:",
+    "maxScore": "/ 100"
+  },
+  "buttons": {
+    "undo": "\ucde8\uc18c",
+    "restart": "\ub2e4\uc2dc \uc2dc\uc791",
+    "howToPlay": "\uac8c\uc784 \ubc29\ubc95",
+    "ranking": "\ub7ad\ud0b9",
+    "save": "\uc800\uc7a5",
+    "saving": "\uc800\uc7a5 \uc911...",
+    "close": "\ub2eb\uae30",
+    "playAgain": "\ub2e4\uc2dc \ud558\uae30",
+    "exit": "\uc885\ub8cc",
+    "understood": "\uc54c\uaca0\uc5b4\uc694!"
+  },
+  "gameOver": {
+    "title": "\uac8c\uc784 \uc885\ub8cc!",
+    "score": "\uc810\uc218:",
+    "perfect": "\ub180\ub77c\uc6cc\uc694! \uc804\uccb4 \ubcf4\ub4dc\ub97c \uc644\uc131\ud588\uc5b4\uc694!",
+    "excellent": "\ud658\uc0c1\uc801! \uac70\uc758 \uc644\ubcbd\ud574\uc694!",
+    "great": "\uc544\uc8fc \uc88b\uc740 \uac8c\uc784!",
+    "good": "\uc88b\uc544\uc694! \ub354 \uc798\ud560 \uc218 \uc788\uc5b4\uc694!",
+    "ok": "\ub098\uc058\uc9c0 \uc54a\uc544\uc694!",
+    "keepTrying": "\uacc4\uc18d \uc5f0\uc2b5\ud558\uc138\uc694!",
+    "topPlayer": "\ucd95\ud558\ud569\ub2c8\ub2e4! TOP 100\uc5d0 \ub4e4\uc5c8\uc5b4\uc694!",
+    "position": "\uc21c\uc704: {{position}}\uc704",
+    "enterName": "\uc774\ub984\uc744 \uc785\ub825\ud558\uc138\uc694...",
+    "saved": "\uc810\uc218 \uc800\uc7a5 \uc644\ub8cc!",
+    "saveError": "\uc800\uc7a5 \uc624\ub958. \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694."
+  },
+  "ranking": {
+    "title": "\ucd5c\uace0 \ud50c\ub808\uc774\uc5b4",
+    "loading": "\ub85c\ub529 \uc911...",
+    "loadError": "\ub7ad\ud0b9 \ub85c\ub529 \uc624\ub958",
+    "empty": "\uc544\uc9c1 \uc810\uc218\uac00 \uc5c6\uc5b4\uc694!",
+    "moves": "{{count}}\uc218"
+  },
+  "help": {
+    "title": "\uac8c\uc784 \ubc29\ubc95",
+    "objective": "\ubaa9\ud45c",
+    "objectiveText": "\ub098\uc774\ud2b8\ub97c \uc774\ub3d9\ud558\uc5ec \uce78\uc744 \ubc18\ubcf5\ud558\uc9c0 \uc54a\uace0 \ucd5c\ub300\ud55c \ub9ce\uc740 \uce78\uc744 \ubc29\ubb38\ud558\uc138\uc694.",
+    "movement": "\ub098\uc774\ud2b8 \uc774\ub3d9",
+    "movementText": "\ub098\uc774\ud2b8\ub294 L\uc790 \ubaa8\uc591\uc73c\ub85c \uc774\ub3d9\ud569\ub2c8\ub2e4:",
+    "movementOption1": "\ud55c \ubc29\ud5a5\uc73c\ub85c 2\uce78 + \uc218\uc9c1\uc73c\ub85c 1\uce78",
+    "movementOption2": "\ub610\ub294 \ud55c \ubc29\ud5a5\uc73c\ub85c 1\uce78 + \uc218\uc9c1\uc73c\ub85c 2\uce78",
+    "colors": "\uc0c9\uc0c1",
+    "validMoves": "\uc720\ud6a8\ud55c \uc774\ub3d9",
+    "invalidMove": "\uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 \uc774\ub3d9",
+    "visitedCells": "\ubc29\ubb38\ud55c \uce78",
+    "knightPosition": "\ub098\uc774\ud2b8 \uc704\uce58",
+    "scoring": "\uc810\uc218",
+    "scoringText": "\uc810\uc218\ub294 \ubc29\ubb38\ud55c \uce78\uc758 \uc218\uc785\ub2c8\ub2e4. \ucd5c\ub300 100(\ubaa8\ub4e0 \uce78!)\uc785\ub2c8\ub2e4."
+  }
+}

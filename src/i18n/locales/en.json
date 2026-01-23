@@ -1,0 +1,64 @@
+{
+  "game": {
+    "title": "Knight's Tour",
+    "clickToPlace": "Click a square to place the knight!",
+    "moveKnight": "Move the knight in an L shape!",
+    "invalidMove": "Invalid move!",
+    "turnMessage": "Turn {{turn}} - Well done!",
+    "gameEndSingle": "Game over! 1 move.",
+    "gameEnd": "Done! {{moves}} moves.",
+    "undone": "Undone!",
+    "turn": "Turn:",
+    "maxScore": "/ 100"
+  },
+  "buttons": {
+    "undo": "Undo",
+    "restart": "Restart",
+    "howToPlay": "How to play",
+    "ranking": "Ranking",
+    "save": "Save",
+    "saving": "Saving...",
+    "close": "Close",
+    "playAgain": "Play Again",
+    "exit": "Exit",
+    "understood": "Got it!"
+  },
+  "gameOver": {
+    "title": "Game Over!",
+    "score": "Score:",
+    "perfect": "INCREDIBLE! You completed the entire board!",
+    "excellent": "Fantastic! Almost perfect!",
+    "great": "Very good game!",
+    "good": "Good! You can do better!",
+    "ok": "Not bad!",
+    "keepTrying": "Keep practicing!",
+    "topPlayer": "Congratulations! You're in the TOP 100!",
+    "position": "Position: {{position}}th",
+    "enterName": "Enter your name...",
+    "saved": "Score saved!",
+    "saveError": "Error saving score. Try again."
+  },
+  "ranking": {
+    "title": "Best Players",
+    "loading": "Loading...",
+    "loadError": "Error loading rankings",
+    "empty": "No scores yet!",
+    "moves": "{{count}} moves"
+  },
+  "help": {
+    "title": "How to Play",
+    "objective": "Objective",
+    "objectiveText": "Visit as many squares as possible by moving the knight without repeating any square.",
+    "movement": "Knight Movement",
+    "movementText": "The knight moves in an L shape:",
+    "movementOption1": "2 squares in one direction + 1 square perpendicular",
+    "movementOption2": "Or 1 square in one direction + 2 squares perpendicular",
+    "colors": "Colors",
+    "validMoves": "Valid moves",
+    "invalidMove": "Invalid move",
+    "visitedCells": "Visited squares",
+    "knightPosition": "Knight position",
+    "scoring": "Scoring",
+    "scoringText": "Your score is the number of visited squares. Maximum is 100 (all squares!)."
+  }
+}

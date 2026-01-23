@@ -1,0 +1,64 @@
+{
+  "game": {
+    "title": "O Passeio do Cavalo",
+    "clickToPlace": "Clique numa casa para colocar o cavalo!",
+    "moveKnight": "Mova o cavalo em L!",
+    "invalidMove": "Movimento inv\u00e1lido!",
+    "turnMessage": "Turno {{turn}} - Muito bem!",
+    "gameEndSingle": "Jogo terminado! 1 movimento.",
+    "gameEnd": "Fim! {{moves}} movimentos.",
+    "undone": "Desfeito!",
+    "turn": "Turno:",
+    "maxScore": "/ 100"
+  },
+  "buttons": {
+    "undo": "Desfazer",
+    "restart": "Reiniciar",
+    "howToPlay": "Como jogar",
+    "ranking": "Ranking",
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "close": "Fechar",
+    "playAgain": "Jogar Novamente",
+    "exit": "Sair",
+    "understood": "Entendido!"
+  },
+  "gameOver": {
+    "title": "Fim do Jogo!",
+    "score": "Pontua\u00e7\u00e3o:",
+    "perfect": "INCR\u00cdVEL! Completou todo o tabuleiro!",
+    "excellent": "Fant\u00e1stico! Quase perfeito!",
+    "great": "Muito bom jogo!",
+    "good": "Bom! Pode melhorar!",
+    "ok": "Nada mal!",
+    "keepTrying": "Continue praticando!",
+    "topPlayer": "Parab\u00e9ns! Est\u00e1 no TOP 100!",
+    "position": "Posi\u00e7\u00e3o: {{position}}\u00ba",
+    "enterName": "Escreva o seu nome...",
+    "saved": "Pontua\u00e7\u00e3o guardada!",
+    "saveError": "Erro ao guardar a pontua\u00e7\u00e3o. Tente novamente."
+  },
+  "ranking": {
+    "title": "Melhores Jogadores",
+    "loading": "Carregando...",
+    "loadError": "Erro ao carregar o ranking",
+    "empty": "Ainda n\u00e3o h\u00e1 pontua\u00e7\u00f5es!",
+    "moves": "{{count}} movimentos"
+  },
+  "help": {
+    "title": "Como Jogar",
+    "objective": "Objetivo",
+    "objectiveText": "Visite o m\u00e1ximo de casas poss\u00edvel movendo o cavalo sem repetir nenhuma casa.",
+    "movement": "Movimento do Cavalo",
+    "movementText": "O cavalo move-se em forma de L:",
+    "movementOption1": "2 casas numa dire\u00e7\u00e3o + 1 casa perpendicular",
+    "movementOption2": "Ou 1 casa numa dire\u00e7\u00e3o + 2 casas perpendiculares",
+    "colors": "Cores",
+    "validMoves": "Movimentos v\u00e1lidos",
+    "invalidMove": "Movimento inv\u00e1lido",
+    "visitedCells": "Casas visitadas",
+    "knightPosition": "Posi\u00e7\u00e3o do cavalo",
+    "scoring": "Pontua\u00e7\u00e3o",
+    "scoringText": "A pontua\u00e7\u00e3o \u00e9 o n\u00famero de casas visitadas. O m\u00e1ximo \u00e9 100 (todas as casas!)."
+  }
+}

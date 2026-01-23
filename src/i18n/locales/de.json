@@ -1,0 +1,64 @@
+{
+  "game": {
+    "title": "Der Springerzug",
+    "clickToPlace": "Klicken Sie auf ein Feld, um den Springer zu platzieren!",
+    "moveKnight": "Bewegen Sie den Springer im L!",
+    "invalidMove": "Ung\u00fcltiger Zug!",
+    "turnMessage": "Zug {{turn}} - Sehr gut!",
+    "gameEndSingle": "Spiel beendet! 1 Zug.",
+    "gameEnd": "Fertig! {{moves}} Z\u00fcge.",
+    "undone": "R\u00fcckg\u00e4ngig gemacht!",
+    "turn": "Zug:",
+    "maxScore": "/ 100"
+  },
+  "buttons": {
+    "undo": "R\u00fcckg\u00e4ngig",
+    "restart": "Neustart",
+    "howToPlay": "Spielanleitung",
+    "ranking": "Rangliste",
+    "save": "Speichern",
+    "saving": "Speichern...",
+    "close": "Schlie\u00dfen",
+    "playAgain": "Nochmal spielen",
+    "exit": "Beenden",
+    "understood": "Verstanden!"
+  },
+  "gameOver": {
+    "title": "Spiel beendet!",
+    "score": "Punktzahl:",
+    "perfect": "UNGLAUBLICH! Sie haben das gesamte Brett geschafft!",
+    "excellent": "Fantastisch! Fast perfekt!",
+    "great": "Sehr gutes Spiel!",
+    "good": "Gut! Sie k\u00f6nnen es besser!",
+    "ok": "Nicht schlecht!",
+    "keepTrying": "Weiter \u00fcben!",
+    "topPlayer": "Gl\u00fcckwunsch! Sie sind in den TOP 100!",
+    "position": "Position: {{position}}.",
+    "enterName": "Geben Sie Ihren Namen ein...",
+    "saved": "Punktzahl gespeichert!",
+    "saveError": "Fehler beim Speichern. Versuchen Sie es erneut."
+  },
+  "ranking": {
+    "title": "Beste Spieler",
+    "loading": "Laden...",
+    "loadError": "Fehler beim Laden der Rangliste",
+    "empty": "Noch keine Punktzahlen!",
+    "moves": "{{count}} Z\u00fcge"
+  },
+  "help": {
+    "title": "Spielanleitung",
+    "objective": "Ziel",
+    "objectiveText": "Besuchen Sie so viele Felder wie m\u00f6glich, indem Sie den Springer bewegen, ohne ein Feld zu wiederholen.",
+    "movement": "Springerbewegung",
+    "movementText": "Der Springer bewegt sich in L-Form:",
+    "movementOption1": "2 Felder in eine Richtung + 1 Feld senkrecht",
+    "movementOption2": "Oder 1 Feld in eine Richtung + 2 Felder senkrecht",
+    "colors": "Farben",
+    "validMoves": "G\u00fcltige Z\u00fcge",
+    "invalidMove": "Ung\u00fcltiger Zug",
+    "visitedCells": "Besuchte Felder",
+    "knightPosition": "Springerposition",
+    "scoring": "Punktzahl",
+    "scoringText": "Die Punktzahl ist die Anzahl der besuchten Felder. Maximum ist 100 (alle Felder!)."
+  }
+}
