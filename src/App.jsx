@@ -108,6 +108,7 @@ function App() {
       if (checkGameOver(row, col, newBoard)) {
         const time = Math.floor((Date.now() - startTimeRef.current) / 1000)
         setFinalTime(time)
+        setElapsedTime(time)
         setGameOver(true)
         setMessageKey({ key: 'gameEndSingle', params: {} })
       }
@@ -140,6 +141,7 @@ function App() {
     if (checkGameOver(row, col, newBoard)) {
       const time = Math.floor((Date.now() - startTimeRef.current) / 1000)
       setFinalTime(time)
+      setElapsedTime(time)
       if (timerRef.current) {
         clearInterval(timerRef.current)
       }
