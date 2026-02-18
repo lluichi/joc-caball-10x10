@@ -2,11 +2,15 @@ import Cell from './Cell'
 import './Board.css'
 
 function Board({ board, knightPosition, validMoves, invalidMove, onCellClick, isFirstMove }) {
+  const rows = board.length
+  const cols = board[0].length
+
   return (
-    <div className="board">
+    <div className="board" style={{ '--board-cols': cols, '--board-rows': rows }}>
       {board.map((row, rowIndex) => (
         <div key={rowIndex} className="board-row">
           {row.map((cell, colIndex) => {
+            const isBlocked = cell === null
             const isKnight = knightPosition && knightPosition[0] === rowIndex && knightPosition[1] === colIndex
             const isValidMove = validMoves.some(([r, c]) => r === rowIndex && c === colIndex)
             const isInvalidMove = invalidMove && invalidMove[0] === rowIndex && invalidMove[1] === colIndex
@@ -16,6 +20,7 @@ function Board({ board, knightPosition, validMoves, invalidMove, onCellClick, is
               <Cell
                 key={`${rowIndex}-${colIndex}`}
                 value={cell}
+                isBlocked={isBlocked}
                 isKnight={isKnight}
                 isValidMove={isValidMove}
                 isInvalidMove={isInvalidMove}

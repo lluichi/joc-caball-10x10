@@ -6,63 +6,88 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  padding-top: 0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   box-sizing: border-box;
 }
 
-/* Header */
+/* Header sticky */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   width: 100%;
-  max-width: 600px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 8px 0;
   margin-bottom: 8px;
 }
 
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
   position: relative;
 }
 
+/* Botó hamburguesa a l'esquerra */
+.header-menu-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+.header-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Títol centrat */
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.header-knight {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
 .header h1 {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin: 0;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.header-buttons {
-  display: flex;
-  gap: 8px;
-  position: absolute;
-  right: 0;
+.header-board-name {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  font-weight: normal;
 }
 
-.btn-small {
-  padding: 8px 12px !important;
-  font-size: 1.2rem !important;
-  min-width: auto !important;
+/* Selector d'idioma a la dreta (desktop) */
+.header-right {
+  flex-shrink: 0;
 }
 
-/* Menú mòbil */
-.menu-toggle {
-  position: absolute;
-  right: 0;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  padding: 8px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.menu-toggle:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
+/* Menú desplegable (hamburguesa) */
 .mobile-menu {
   display: flex;
   flex-direction: column;
@@ -72,6 +97,9 @@
   background: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mobile-menu > button {
@@ -123,12 +151,8 @@
   width: 200px;
 }
 
-/* Responsive visibility */
-.desktop-only {
-  display: flex;
-}
-
-.mobile-only {
+/* Desktop: amagar selector d'idioma duplicat del menú */
+.mobile-only-lang {
   display: none;
 }
 
@@ -238,6 +262,10 @@
   cursor: not-allowed;
 }
 
+.btn-settings {
+  background: linear-gradient(145deg, #78909c, #546e7a);
+}
+
 .btn-undo {
   background: linear-gradient(145deg, #ffa726, #fb8c00);
 }
@@ -254,10 +282,19 @@
   background: linear-gradient(145deg, #ab47bc, #8e24aa);
 }
 
+/* Responsive visibility */
+.desktop-only {
+  display: flex;
+}
+
 /* Responsive - Tablet */
 @media (max-width: 700px) {
   .header h1 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .header-board-name {
+    font-size: 0.75rem;
   }
 
   .controls {
@@ -274,14 +311,19 @@
 @media (max-width: 550px) {
   .app {
     padding: 8px;
+    padding-top: 0;
   }
 
   .desktop-only {
     display: none !important;
   }
 
-  .mobile-only {
+  .mobile-only-lang {
     display: flex;
+  }
+
+  .header-right {
+    display: none;
   }
 
   .header {
@@ -289,7 +331,15 @@
   }
 
   .header h1 {
+    font-size: 1rem;
+  }
+
+  .header-knight {
     font-size: 1.3rem;
+  }
+
+  .header-board-name {
+    font-size: 0.7rem;
   }
 
   .game-info {
@@ -320,7 +370,11 @@
 /* Responsive - Mòbil petit */
 @media (max-width: 400px) {
   .header h1 {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
+  }
+
+  .header-board-name {
+    display: none;
   }
 
   .game-info {
@@ -341,10 +395,12 @@
 @media (max-height: 750px) {
   .app {
     padding: 5px;
+    padding-top: 0;
   }
 
   .header {
     margin-bottom: 5px;
+    padding: 5px 0;
   }
 
   .game-info {

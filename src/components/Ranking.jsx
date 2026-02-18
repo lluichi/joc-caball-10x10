@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { obtenirRanking } from '../utils/ranking'
+import BOARD_CONFIGS from '../utils/boardConfigs'
 import './Ranking.css'
 
-function Ranking({ onClose }) {
+function Ranking({ currentBoardId, onClose }) {
   const { t } = useTranslation()
   const [rankings, setRankings] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [filterBoard, setFilterBoard] = useState(currentBoardId || '')
 
   // Formatar temps en mm:ss
   const formatTime = (seconds) => {
@@ -22,7 +24,7 @@ function Ranking({ onClose }) {
       setLoading(true)
       setError(null)
       try {
-        const data = await obtenirRanking()
+        const data = await obtenirRanking(filterBoard || undefined)
         setRankings(data)
       } catch {
         setError(t('ranking.loadError'))
@@ -31,7 +33,7 @@ function Ranking({ onClose }) {
       }
     }
     carregarRankings()
-  }, [t])
+  }, [t, filterBoard])
 
   const getMedal = (index) => {
     if (index === 0) return '🥇'
@@ -40,10 +42,28 @@ function Ranking({ onClose }) {
     return `${index + 1}.`
   }
 
+  const boardOptions = Object.keys(BOARD_CONFIGS)
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal ranking-modal" onClick={e => e.stopPropagation()}>
         <h2>🏆 {t('ranking.title')} 🏆</h2>
+
+        <div className="ranking-filter">
+          <label htmlFor="ranking-board-filter">{t('ranking.filterBoard')}</label>
+          <select
+            id="ranking-board-filter"
+            value={filterBoard}
+            onChange={e => setFilterBoard(e.target.value)}
+          >
+            <option value="">{t('ranking.filterAll')}</option>
+            {boardOptions.map(id => (
+              <option key={id} value={id}>
+                {t(`boards.${id}`)}
+              </option>
+            ))}
+          </select>
+        </div>
 
         {loading ? (
           <p className="loading-rankings">{t('ranking.loading')}</p>

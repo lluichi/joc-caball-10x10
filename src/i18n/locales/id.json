@@ -9,13 +9,14 @@
     "gameEnd": "Selesai! {{moves}} gerakan.",
     "undone": "Dibatalkan!",
     "turn": "Giliran:",
-    "maxScore": "/ 100"
+    "maxScore": "/ {{max}}"
   },
   "buttons": {
     "undo": "Batalkan",
     "restart": "Mulai Ulang",
     "howToPlay": "Cara Bermain",
     "ranking": "Peringkat",
+    "settings": "Pengaturan",
     "save": "Simpan",
     "saving": "Menyimpan...",
     "close": "Tutup",
@@ -26,6 +27,7 @@
   "gameOver": {
     "title": "Permainan Selesai!",
     "score": "Skor:",
+    "scoreMax": "/ {{max}}",
     "time": "Waktu:",
     "perfect": "LUAR BIASA! Anda menyelesaikan seluruh papan!",
     "excellent": "Fantastis! Hampir sempurna!",
@@ -44,7 +46,9 @@
     "loading": "Memuat...",
     "loadError": "Gagal memuat peringkat",
     "empty": "Belum ada skor!",
-    "moves": "{{count}} gerakan"
+    "moves": "{{count}} gerakan",
+    "filterAll": "Semua papan",
+    "filterBoard": "Papan:"
   },
   "help": {
     "title": "Cara Bermain",
@@ -60,6 +64,39 @@
     "visitedCells": "Kotak yang dikunjungi",
     "knightPosition": "Posisi kuda",
     "scoring": "Penilaian",
-    "scoringText": "Skor adalah jumlah kotak yang dikunjungi. Maksimum 100 (semua kotak!)."
+    "scoringText": "Skor adalah jumlah kotak yang dikunjungi. Maksimum {{max}} (semua kotak!)."
+  },
+  "settings": {
+    "title": "Pengaturan Permainan",
+    "description": "Sesuaikan tantangan Anda dengan memilih bentuk dan ukuran papan.",
+    "boardType": "Jenis papan",
+    "boardSize": "Ukuran",
+    "accept": "Terima",
+    "cancel": "Batal"
+  },
+  "boardTypes": {
+    "classic": "Klasik",
+    "anell": "Cincin",
+    "creu": "Salib",
+    "pont": "Jembatan"
+  },
+  "boards": {
+    "classic_5x5": "Klasik 5×5",
+    "classic_8x8": "Klasik 8×8",
+    "classic_8x10": "Klasik 8×10",
+    "classic_10x10": "Klasik 10×10",
+    "classic_10x12": "Klasik 10×12",
+    "classic_12x12": "Klasik 12×12",
+    "anell_8x8_h2x2": "Cincin 8×8 (lubang 2×2)",
+    "anell_10x10_h4x4": "Cincin 10×10 (lubang 4×4)",
+    "anell_10x12_h4x6": "Cincin 10×12 (lubang 4×6)",
+    "anell_12x12_h6x6": "Cincin 12×12 (lubang 6×6)",
+    "creu_7x7_e2x2": "Salib 7×7 (sudut 2×2)",
+    "creu_10x10_e3x3": "Salib 10×10 (sudut 3×3)",
+    "creu_13x13_e4x4": "Salib 13×13 (sudut 4×4)",
+    "pont_4x4_4x4_1x1": "Jembatan 4×4+4×4 (jembatan 1×1)",
+    "pont_5x5_5x5_1x1": "Jembatan 5×5+5×5 (jembatan 1×1)",
+    "pont_4x4_6x6_1x2": "Jembatan 4×4+6×6 (jembatan 1×2)",
+    "pont_triple_4x4": "Jembatan Triple 4×4"
   }
 }

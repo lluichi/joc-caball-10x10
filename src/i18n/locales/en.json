@@ -9,7 +9,7 @@
     "gameEnd": "Done! {{moves}} moves.",
     "undone": "Undone!",
     "turn": "Turn:",
-    "maxScore": "/ 100"
+    "maxScore": "/ {{max}}"
   },
   "buttons": {
     "undo": "Undo",
@@ -21,7 +21,8 @@
     "close": "Close",
     "playAgain": "Play Again",
     "exit": "Exit",
-    "understood": "Got it!"
+    "understood": "Got it!",
+    "settings": "Settings"
   },
   "gameOver": {
     "title": "Game Over!",
@@ -37,14 +38,17 @@
     "position": "Position: {{position}}th",
     "enterName": "Enter your name...",
     "saved": "Score saved!",
-    "saveError": "Error saving score. Try again."
+    "saveError": "Error saving score. Try again.",
+    "scoreMax": "/ {{max}}"
   },
   "ranking": {
     "title": "Best Players",
     "loading": "Loading...",
     "loadError": "Error loading rankings",
     "empty": "No scores yet!",
-    "moves": "{{count}} moves"
+    "moves": "{{count}} moves",
+    "filterAll": "All boards",
+    "filterBoard": "Board:"
   },
   "help": {
     "title": "How to Play",
@@ -60,6 +64,39 @@
     "visitedCells": "Visited squares",
     "knightPosition": "Knight position",
     "scoring": "Scoring",
-    "scoringText": "Your score is the number of visited squares. Maximum is 100 (all squares!)."
+    "scoringText": "Your score is the number of visited squares. Maximum is {{max}} (all squares!)."
+  },
+  "settings": {
+    "title": "Game Settings",
+    "description": "Customize your challenge by selecting the board shape and dimensions.",
+    "boardType": "Board type",
+    "boardSize": "Size",
+    "accept": "Accept",
+    "cancel": "Cancel"
+  },
+  "boardTypes": {
+    "classic": "Classic",
+    "anell": "The Ring",
+    "creu": "The Cross",
+    "pont": "The Bridge"
+  },
+  "boards": {
+    "classic_5x5": "Classic 5\u00d75",
+    "classic_8x8": "Classic 8\u00d78",
+    "classic_8x10": "Classic 8\u00d710",
+    "classic_10x10": "Classic 10\u00d710",
+    "classic_10x12": "Classic 10\u00d712",
+    "classic_12x12": "Classic 12\u00d712",
+    "anell_8x8_h2x2": "Ring 8\u00d78 (hole 2\u00d72)",
+    "anell_10x10_h4x4": "Ring 10\u00d710 (hole 4\u00d74)",
+    "anell_10x12_h4x6": "Ring 10\u00d712 (hole 4\u00d76)",
+    "anell_12x12_h6x6": "Ring 12\u00d712 (hole 6\u00d76)",
+    "creu_7x7_e2x2": "Cross 7\u00d77 (corner 2\u00d72)",
+    "creu_10x10_e3x3": "Cross 10\u00d710 (corner 3\u00d73)",
+    "creu_13x13_e4x4": "Cross 13\u00d713 (corner 4\u00d74)",
+    "pont_4x4_4x4_1x1": "Bridge 4\u00d74+4\u00d74 (bridge 1\u00d71)",
+    "pont_5x5_5x5_1x1": "Bridge 5\u00d75+5\u00d75 (bridge 1\u00d71)",
+    "pont_4x4_6x6_1x2": "Bridge 4\u00d74+6\u00d76 (bridge 1\u00d72)",
+    "pont_triple_4x4": "Triple Bridge 4\u00d74"
   }
 }

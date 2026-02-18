@@ -4,7 +4,9 @@ import Board from './components/Board'
 import Ranking from './components/Ranking'
 import GameOverModal from './components/GameOverModal'
 import HelpModal from './components/HelpModal'
+import SettingsModal from './components/SettingsModal'
 import LanguageSelector from './components/LanguageSelector'
+import { getBoardConfig, DEFAULT_BOARD_ID } from './utils/boardConfigs'
 import './App.css'
 
 // Moviments possibles del cavall (en forma de L)
@@ -13,16 +15,17 @@ const KNIGHT_MOVES = [
   [1, -2], [1, 2], [2, -1], [2, 1]
 ]
 
-const BOARD_SIZE = 10
-
 function App() {
   const { t } = useTranslation()
-  const [board, setBoard] = useState(Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0)))
+  const [boardConfigId, setBoardConfigId] = useState(DEFAULT_BOARD_ID)
+  const boardConfig = getBoardConfig(boardConfigId)
+  const [board, setBoard] = useState(() => boardConfig.generate())
   const [knightPosition, setKnightPosition] = useState(null)
   const [turn, setTurn] = useState(0)
   const [gameOver, setGameOver] = useState(false)
   const [showRanking, setShowRanking] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
   const [invalidMove, setInvalidMove] = useState(null)
   const [history, setHistory] = useState([])
   const [menuOpen, setMenuOpen] = useState(false)
@@ -71,12 +74,14 @@ function App() {
   // Obtenir moviments vàlids des d'una posició
   const getValidMoves = useCallback((row, col, currentBoard) => {
     if (row === null || col === null) return []
+    const rows = currentBoard.length
+    const cols = currentBoard[0].length
 
     return KNIGHT_MOVES
       .map(([dr, dc]) => [row + dr, col + dc])
       .filter(([r, c]) =>
-        r >= 0 && r < BOARD_SIZE &&
-        c >= 0 && c < BOARD_SIZE &&
+        r >= 0 && r < rows &&
+        c >= 0 && c < cols &&
         currentBoard[r][c] === 0
       )
   }, [])
@@ -90,6 +95,8 @@ function App() {
   // Gestionar clic a una casella
   const handleCellClick = (row, col) => {
     if (gameOver) return
+    // No permetre clic a caselles bloquejades (null)
+    if (board[row][col] === null) return
 
     // Primer moviment: col·locar el cavall
     if (knightPosition === null) {
@@ -163,9 +170,31 @@ function App() {
     setMenuOpen(false)
   }
 
-  // Reiniciar partida
+  // Reiniciar partida (amb el tauler actual)
   const handleRestart = () => {
-    setBoard(Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(0)))
+    const config = getBoardConfig(boardConfigId)
+    setBoard(config.generate())
+    setKnightPosition(null)
+    setTurn(0)
+    setGameOver(false)
+    setHistory([])
+    setInvalidMove(null)
+    setMessageKey({ key: 'clickToPlace', params: {} })
+    setMenuOpen(false)
+    // Reiniciar cronòmetre
+    if (timerRef.current) {
+      clearInterval(timerRef.current)
+    }
+    startTimeRef.current = null
+    setElapsedTime(0)
+    setFinalTime(0)
+  }
+
+  // Aplicar nova configuració de tauler
+  const handleApplySettings = (newBoardId) => {
+    setBoardConfigId(newBoardId)
+    const config = getBoardConfig(newBoardId)
+    setBoard(config.generate())
     setKnightPosition(null)
     setTurn(0)
     setGameOver(false)
@@ -195,25 +224,39 @@ function App() {
     <div className="app">
       <header className="header">
         <div className="header-content">
-          <h1>🐴 {t('game.title')}</h1>
-
-          {/* Selector d'idioma desktop */}
-          <div className="header-buttons desktop-only">
-            <LanguageSelector />
-          </div>
-
-          {/* Menú hamburguesa mòbil */}
-          <button className="menu-toggle mobile-only" onClick={() => setMenuOpen(!menuOpen)}>
+          {/* Hamburguesa esquerra */}
+          <button
+            className="header-menu-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
+          >
             {menuOpen ? '✕' : '☰'}
           </button>
+
+          {/* Títol centrat amb nom del tauler */}
+          <div className="header-title">
+            <span className="header-knight">♞</span>
+            <h1>
+              {t('game.title')}
+              <span className="header-board-name"> — {t(`boards.${boardConfigId}`)}</span>
+            </h1>
+          </div>
+
+          {/* Selector d'idioma a la dreta */}
+          <div className="header-right">
+            <LanguageSelector />
+          </div>
         </div>
 
-        {/* Menú desplegable mòbil */}
+        {/* Menú desplegable */}
         {menuOpen && (
           <div className="mobile-menu">
-            <div className="mobile-menu-language">
+            <div className="mobile-menu-language mobile-only-lang">
               <LanguageSelector />
             </div>
+            <button onClick={() => { setShowSettings(true); setMenuOpen(false); }}>
+              ⚙️ {t('buttons.settings')}
+            </button>
             <button onClick={() => { setShowHelp(true); setMenuOpen(false); }}>
               ❓ {t('buttons.howToPlay')}
             </button>
@@ -234,7 +277,7 @@ function App() {
         <div className="turn-counter">
           <span className="turn-label">{t('game.turn')}</span>
           <span className="turn-number">{turn}</span>
-          <span className="max-score">{t('game.maxScore')}</span>
+          <span className="max-score">{t('game.maxScore', { max: boardConfig.totalCells })}</span>
           {knightPosition && (
             <>
               <span className="time-separator">|</span>
@@ -259,6 +302,9 @@ function App() {
 
       {/* Controls desktop */}
       <div className="controls desktop-only">
+        <button className="btn btn-settings" onClick={() => setShowSettings(true)}>
+          ⚙️ {t('buttons.settings')}
+        </button>
         <button className="btn btn-undo" onClick={handleUndo} disabled={!canUndo}>
           ⏪ {t('buttons.undo')}
         </button>
@@ -276,7 +322,9 @@ function App() {
       {gameOver && (
         <GameOverModal
           score={turn}
+          maxScore={boardConfig.totalCells}
           time={finalTime}
+          boardConfigId={boardConfigId}
           onClose={handleCloseModal}
           onRestart={handleRestart}
         />
@@ -284,13 +332,23 @@ function App() {
 
       {showRanking && (
         <Ranking
+          currentBoardId={boardConfigId}
           onClose={() => setShowRanking(false)}
         />
       )}
 
       {showHelp && (
         <HelpModal
+          maxScore={boardConfig.totalCells}
           onClose={() => setShowHelp(false)}
+        />
+      )}
+
+      {showSettings && (
+        <SettingsModal
+          currentBoardId={boardConfigId}
+          onApply={handleApplySettings}
+          onClose={() => setShowSettings(false)}
         />
       )}
     </div>

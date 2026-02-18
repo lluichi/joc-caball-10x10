@@ -9,7 +9,7 @@
     "gameEnd": "Fi! {{moves}} moviments.",
     "undone": "Desfet!",
     "turn": "Torn:",
-    "maxScore": "/ 100"
+    "maxScore": "/ {{max}}"
   },
   "buttons": {
     "undo": "Desfer",
@@ -21,7 +21,8 @@
     "close": "Tancar",
     "playAgain": "Tornar a Jugar",
     "exit": "Sortir",
-    "understood": "Entesos!"
+    "understood": "Entesos!",
+    "settings": "Configuraci\u00f3"
   },
   "gameOver": {
     "title": "Fi de la Partida!",
@@ -37,14 +38,17 @@
     "position": "Posici\u00f3: {{position}}\u00e8",
     "enterName": "Escriu el teu nom...",
     "saved": "Puntuaci\u00f3 guardada!",
-    "saveError": "Error guardant la puntuaci\u00f3. Torna-ho a provar."
+    "saveError": "Error guardant la puntuaci\u00f3. Torna-ho a provar.",
+    "scoreMax": "/ {{max}}"
   },
   "ranking": {
     "title": "Millors Jugadors",
     "loading": "Carregant...",
     "loadError": "Error carregant els rankings",
     "empty": "Encara no hi ha puntuacions!",
-    "moves": "{{count}} moviments"
+    "moves": "{{count}} moviments",
+    "filterAll": "Tots els taulers",
+    "filterBoard": "Tauler:"
   },
   "help": {
     "title": "Com Jugar",
@@ -60,6 +64,39 @@
     "visitedCells": "Caselles visitades",
     "knightPosition": "Posici\u00f3 del cavall",
     "scoring": "Puntuaci\u00f3",
-    "scoringText": "La puntuaci\u00f3 \u00e9s el nombre de caselles visitades. El m\u00e0xim \u00e9s 100 (totes les caselles!)."
+    "scoringText": "La puntuaci\u00f3 \u00e9s el nombre de caselles visitades. El m\u00e0xim \u00e9s {{max}} (totes les caselles!)."
+  },
+  "settings": {
+    "title": "Configuraci\u00f3 del Joc",
+    "description": "Personalitza el teu repte seleccionant la forma del tauler i les seves dimensions.",
+    "boardType": "Tipus de tauler",
+    "boardSize": "Mides",
+    "accept": "Acceptar",
+    "cancel": "Cancel\u00b7lar"
+  },
+  "boardTypes": {
+    "classic": "Cl\u00e0ssic",
+    "anell": "L'Anell",
+    "creu": "La Creu",
+    "pont": "El Pont"
+  },
+  "boards": {
+    "classic_5x5": "Cl\u00e0ssic 5\u00d75",
+    "classic_8x8": "Cl\u00e0ssic 8\u00d78",
+    "classic_8x10": "Cl\u00e0ssic 8\u00d710",
+    "classic_10x10": "Cl\u00e0ssic 10\u00d710",
+    "classic_10x12": "Cl\u00e0ssic 10\u00d712",
+    "classic_12x12": "Cl\u00e0ssic 12\u00d712",
+    "anell_8x8_h2x2": "Anell 8\u00d78 (forat 2\u00d72)",
+    "anell_10x10_h4x4": "Anell 10\u00d710 (forat 4\u00d74)",
+    "anell_10x12_h4x6": "Anell 10\u00d712 (forat 4\u00d76)",
+    "anell_12x12_h6x6": "Anell 12\u00d712 (forat 6\u00d76)",
+    "creu_7x7_e2x2": "Creu 7\u00d77 (cantonada 2\u00d72)",
+    "creu_10x10_e3x3": "Creu 10\u00d710 (cantonada 3\u00d73)",
+    "creu_13x13_e4x4": "Creu 13\u00d713 (cantonada 4\u00d74)",
+    "pont_4x4_4x4_1x1": "Pont 4\u00d74+4\u00d74 (pont 1\u00d71)",
+    "pont_5x5_5x5_1x1": "Pont 5\u00d75+5\u00d75 (pont 1\u00d71)",
+    "pont_4x4_6x6_1x2": "Pont 4\u00d74+6\u00d76 (pont 1\u00d72)",
+    "pont_triple_4x4": "Triple Pont 4\u00d74"
   }
 }

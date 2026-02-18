@@ -2,20 +2,21 @@
   "game": {
     "title": "La Promenade du Cavalier",
     "clickToPlace": "Cliquez sur une case pour placer le cavalier !",
-    "moveKnight": "D\u00e9placez le cavalier en L !",
+    "moveKnight": "Déplacez le cavalier en L !",
     "invalidMove": "Mouvement invalide !",
-    "turnMessage": "Tour {{turn}} - Tr\u00e8s bien !",
-    "gameEndSingle": "Partie termin\u00e9e ! 1 mouvement.",
+    "turnMessage": "Tour {{turn}} - Très bien !",
+    "gameEndSingle": "Partie terminée ! 1 mouvement.",
     "gameEnd": "Fini ! {{moves}} mouvements.",
-    "undone": "Annul\u00e9 !",
+    "undone": "Annulé !",
     "turn": "Tour :",
-    "maxScore": "/ 100"
+    "maxScore": "/ {{max}}"
   },
   "buttons": {
     "undo": "Annuler",
     "restart": "Recommencer",
     "howToPlay": "Comment jouer",
     "ranking": "Classement",
+    "settings": "Paramètres",
     "save": "Enregistrer",
     "saving": "Enregistrement...",
     "close": "Fermer",
@@ -26,40 +27,76 @@
   "gameOver": {
     "title": "Fin de Partie !",
     "score": "Score :",
+    "scoreMax": "/ {{max}}",
     "time": "Temps :",
-    "perfect": "INCROYABLE ! Vous avez compl\u00e9t\u00e9 tout le plateau !",
+    "perfect": "INCROYABLE ! Vous avez complété tout le plateau !",
     "excellent": "Fantastique ! Presque parfait !",
-    "great": "Tr\u00e8s bonne partie !",
+    "great": "Très bonne partie !",
     "good": "Bien ! Vous pouvez faire mieux !",
     "ok": "Pas mal !",
-    "keepTrying": "Continuez \u00e0 pratiquer !",
-    "topPlayer": "F\u00e9licitations ! Vous \u00eates dans le TOP 100 !",
-    "position": "Position : {{position}}\u00e8me",
+    "keepTrying": "Continuez à pratiquer !",
+    "topPlayer": "Félicitations ! Vous êtes dans le TOP 100 !",
+    "position": "Position : {{position}}ème",
     "enterName": "Entrez votre nom...",
-    "saved": "Score enregistr\u00e9 !",
-    "saveError": "Erreur lors de l'enregistrement. R\u00e9essayez."
+    "saved": "Score enregistré !",
+    "saveError": "Erreur lors de l'enregistrement. Réessayez."
   },
   "ranking": {
     "title": "Meilleurs Joueurs",
     "loading": "Chargement...",
     "loadError": "Erreur de chargement du classement",
     "empty": "Pas encore de scores !",
-    "moves": "{{count}} mouvements"
+    "moves": "{{count}} mouvements",
+    "filterAll": "Tous les plateaux",
+    "filterBoard": "Plateau :"
   },
   "help": {
     "title": "Comment Jouer",
     "objective": "Objectif",
-    "objectiveText": "Visitez le plus grand nombre de cases possible en d\u00e9pla\u00e7ant le cavalier sans r\u00e9p\u00e9ter aucune case.",
+    "objectiveText": "Visitez le plus grand nombre de cases possible en déplaçant le cavalier sans répéter aucune case.",
     "movement": "Mouvement du Cavalier",
-    "movementText": "Le cavalier se d\u00e9place en forme de L :",
+    "movementText": "Le cavalier se déplace en forme de L :",
     "movementOption1": "2 cases dans une direction + 1 case perpendiculaire",
     "movementOption2": "Ou 1 case dans une direction + 2 cases perpendiculaires",
     "colors": "Couleurs",
     "validMoves": "Mouvements valides",
     "invalidMove": "Mouvement invalide",
-    "visitedCells": "Cases visit\u00e9es",
+    "visitedCells": "Cases visitées",
     "knightPosition": "Position du cavalier",
     "scoring": "Score",
-    "scoringText": "Le score est le nombre de cases visit\u00e9es. Le maximum est 100 (toutes les cases !)."
+    "scoringText": "Le score est le nombre de cases visitées. Le maximum est {{max}} (toutes les cases !)."
+  },
+  "settings": {
+    "title": "Paramètres du Jeu",
+    "description": "Personnalisez votre défi en sélectionnant la forme et les dimensions du plateau.",
+    "boardType": "Type de plateau",
+    "boardSize": "Taille",
+    "accept": "Accepter",
+    "cancel": "Annuler"
+  },
+  "boardTypes": {
+    "classic": "Classique",
+    "anell": "L'Anneau",
+    "creu": "La Croix",
+    "pont": "Le Pont"
+  },
+  "boards": {
+    "classic_5x5": "Classique 5×5",
+    "classic_8x8": "Classique 8×8",
+    "classic_8x10": "Classique 8×10",
+    "classic_10x10": "Classique 10×10",
+    "classic_10x12": "Classique 10×12",
+    "classic_12x12": "Classique 12×12",
+    "anell_8x8_h2x2": "Anneau 8×8 (trou 2×2)",
+    "anell_10x10_h4x4": "Anneau 10×10 (trou 4×4)",
+    "anell_10x12_h4x6": "Anneau 10×12 (trou 4×6)",
+    "anell_12x12_h6x6": "Anneau 12×12 (trou 6×6)",
+    "creu_7x7_e2x2": "Croix 7×7 (coin 2×2)",
+    "creu_10x10_e3x3": "Croix 10×10 (coin 3×3)",
+    "creu_13x13_e4x4": "Croix 13×13 (coin 4×4)",
+    "pont_4x4_4x4_1x1": "Pont 4×4+4×4 (pont 1×1)",
+    "pont_5x5_5x5_1x1": "Pont 5×5+5×5 (pont 1×1)",
+    "pont_4x4_6x6_1x2": "Pont 4×4+6×6 (pont 1×2)",
+    "pont_triple_4x4": "Triple Pont 4×4"
   }
 }

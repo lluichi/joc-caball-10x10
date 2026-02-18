@@ -9,7 +9,7 @@
     "gameEnd": "\u00a1Fin! {{moves}} movimientos.",
     "undone": "\u00a1Deshecho!",
     "turn": "Turno:",
-    "maxScore": "/ 100"
+    "maxScore": "/ {{max}}"
   },
   "buttons": {
     "undo": "Deshacer",
@@ -21,7 +21,8 @@
     "close": "Cerrar",
     "playAgain": "Volver a Jugar",
     "exit": "Salir",
-    "understood": "\u00a1Entendido!"
+    "understood": "\u00a1Entendido!",
+    "settings": "Configuraci\u00f3n"
   },
   "gameOver": {
     "title": "\u00a1Fin de la Partida!",
@@ -37,14 +38,17 @@
     "position": "Posici\u00f3n: {{position}}\u00ba",
     "enterName": "Escribe tu nombre...",
     "saved": "\u00a1Puntuaci\u00f3n guardada!",
-    "saveError": "Error guardando la puntuaci\u00f3n. Int\u00e9ntalo de nuevo."
+    "saveError": "Error guardando la puntuaci\u00f3n. Int\u00e9ntalo de nuevo.",
+    "scoreMax": "/ {{max}}"
   },
   "ranking": {
     "title": "Mejores Jugadores",
     "loading": "Cargando...",
     "loadError": "Error cargando los rankings",
     "empty": "\u00a1A\u00fan no hay puntuaciones!",
-    "moves": "{{count}} movimientos"
+    "moves": "{{count}} movimientos",
+    "filterAll": "Todos los tableros",
+    "filterBoard": "Tablero:"
   },
   "help": {
     "title": "C\u00f3mo Jugar",
@@ -60,6 +64,39 @@
     "visitedCells": "Casillas visitadas",
     "knightPosition": "Posici\u00f3n del caballo",
     "scoring": "Puntuaci\u00f3n",
-    "scoringText": "La puntuaci\u00f3n es el n\u00famero de casillas visitadas. El m\u00e1ximo es 100 (\u00a1todas las casillas!)."
+    "scoringText": "La puntuaci\u00f3n es el n\u00famero de casillas visitadas. El m\u00e1ximo es {{max}} (\u00a1todas las casillas!)."
+  },
+  "settings": {
+    "title": "Configuraci\u00f3n del Juego",
+    "description": "Personaliza tu reto seleccionando la forma del tablero y sus dimensiones.",
+    "boardType": "Tipo de tablero",
+    "boardSize": "Medidas",
+    "accept": "Aceptar",
+    "cancel": "Cancelar"
+  },
+  "boardTypes": {
+    "classic": "Cl\u00e1sico",
+    "anell": "El Anillo",
+    "creu": "La Cruz",
+    "pont": "El Puente"
+  },
+  "boards": {
+    "classic_5x5": "Cl\u00e1sico 5\u00d75",
+    "classic_8x8": "Cl\u00e1sico 8\u00d78",
+    "classic_8x10": "Cl\u00e1sico 8\u00d710",
+    "classic_10x10": "Cl\u00e1sico 10\u00d710",
+    "classic_10x12": "Cl\u00e1sico 10\u00d712",
+    "classic_12x12": "Cl\u00e1sico 12\u00d712",
+    "anell_8x8_h2x2": "Anillo 8\u00d78 (hueco 2\u00d72)",
+    "anell_10x10_h4x4": "Anillo 10\u00d710 (hueco 4\u00d74)",
+    "anell_10x12_h4x6": "Anillo 10\u00d712 (hueco 4\u00d76)",
+    "anell_12x12_h6x6": "Anillo 12\u00d712 (hueco 6\u00d76)",
+    "creu_7x7_e2x2": "Cruz 7\u00d77 (esquina 2\u00d72)",
+    "creu_10x10_e3x3": "Cruz 10\u00d710 (esquina 3\u00d73)",
+    "creu_13x13_e4x4": "Cruz 13\u00d713 (esquina 4\u00d74)",
+    "pont_4x4_4x4_1x1": "Puente 4\u00d74+4\u00d74 (puente 1\u00d71)",
+    "pont_5x5_5x5_1x1": "Puente 5\u00d75+5\u00d75 (puente 1\u00d71)",
+    "pont_4x4_6x6_1x2": "Puente 4\u00d74+6\u00d76 (puente 1\u00d72)",
+    "pont_triple_4x4": "Triple Puente 4\u00d74"
   }
 }

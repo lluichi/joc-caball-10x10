@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { obtenirRanking, guardarRanking } from '../utils/ranking'
 import './GameOverModal.css'
 
-function GameOverModal({ score, time, onClose, onRestart }) {
+function GameOverModal({ score, maxScore, time, boardConfigId, onClose, onRestart }) {
   const { t } = useTranslation()
 
   // Formatar temps en mm:ss
@@ -21,7 +21,7 @@ function GameOverModal({ score, time, onClose, onRestart }) {
 
   useEffect(() => {
     const comprovarPosicio = async () => {
-      const rankings = await obtenirRanking()
+      const rankings = await obtenirRanking(boardConfigId)
 
       // Comprovar si el jugador està entre els 100 millors
       if (rankings.length < 100 || score > rankings[rankings.length - 1].score) {
@@ -32,7 +32,7 @@ function GameOverModal({ score, time, onClose, onRestart }) {
       }
     }
     comprovarPosicio()
-  }, [score])
+  }, [score, boardConfigId])
 
   const handleSave = async () => {
     if (!playerName.trim()) return
@@ -40,7 +40,7 @@ function GameOverModal({ score, time, onClose, onRestart }) {
     setSaving(true)
     setError(null)
 
-    const success = await guardarRanking(playerName.trim(), score, time)
+    const success = await guardarRanking(playerName.trim(), score, time, boardConfigId)
 
     if (success) {
       setHasSaved(true)
@@ -52,11 +52,12 @@ function GameOverModal({ score, time, onClose, onRestart }) {
   }
 
   const getMessage = () => {
-    if (score === 100) return `🎉 ${t('gameOver.perfect')} 🎉`
-    if (score >= 80) return `🌟 ${t('gameOver.excellent')}`
-    if (score >= 60) return `💪 ${t('gameOver.great')}`
-    if (score >= 40) return `👍 ${t('gameOver.good')}`
-    if (score >= 20) return `🎯 ${t('gameOver.ok')}`
+    const ratio = score / maxScore
+    if (ratio === 1) return `🎉 ${t('gameOver.perfect')} 🎉`
+    if (ratio >= 0.8) return `🌟 ${t('gameOver.excellent')}`
+    if (ratio >= 0.6) return `💪 ${t('gameOver.great')}`
+    if (ratio >= 0.4) return `👍 ${t('gameOver.good')}`
+    if (ratio >= 0.2) return `🎯 ${t('gameOver.ok')}`
     return `🐴 ${t('gameOver.keepTrying')}`
   }
 
@@ -68,7 +69,7 @@ function GameOverModal({ score, time, onClose, onRestart }) {
         <div className="score-display">
           <span className="score-label">{t('gameOver.score')}</span>
           <span className="score-value">{score}</span>
-          <span className="score-max">/ 100</span>
+          <span className="score-max">{t('gameOver.scoreMax', { max: maxScore })}</span>
         </div>
 
         <div className="time-display">

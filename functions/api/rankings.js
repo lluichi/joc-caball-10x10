@@ -1,14 +1,26 @@
 // API Cloudflare Pages Functions per als rankings
-// GET /api/rankings - Retorna TOP 100 rankings
-// POST /api/rankings - Guarda un nou ranking { nom, puntuacio, temps }
+// GET /api/rankings - Retorna TOP 100 rankings (opcionalment filtrat per configuracio)
+// POST /api/rankings - Guarda un nou ranking { nom, puntuacio, temps, configuracio }
 
 export async function onRequestGet(context) {
-  const { env } = context
+  const { env, request } = context
 
   try {
-    const { results } = await env.DB.prepare(
-      'SELECT nom, puntuacio, temps, data FROM rankings ORDER BY puntuacio DESC, temps ASC LIMIT 100'
-    ).all()
+    const url = new URL(request.url)
+    const configuracio = url.searchParams.get('configuracio')
+
+    let query, params
+
+    if (configuracio) {
+      query = 'SELECT nom, puntuacio, temps, data, configuracio FROM rankings WHERE configuracio = ? ORDER BY puntuacio DESC, temps ASC LIMIT 100'
+      params = [configuracio]
+    } else {
+      query = 'SELECT nom, puntuacio, temps, data, configuracio FROM rankings ORDER BY puntuacio DESC, temps ASC LIMIT 100'
+      params = []
+    }
+
+    const stmt = env.DB.prepare(query)
+    const { results } = params.length > 0 ? await stmt.bind(...params).all() : await stmt.all()
 
     return Response.json(results, {
       headers: {
@@ -29,7 +41,7 @@ export async function onRequestPost(context) {
   const { env, request } = context
 
   try {
-    const { nom, puntuacio, temps } = await request.json()
+    const { nom, puntuacio, temps, configuracio } = await request.json()
 
     // Validacions
     if (!nom || typeof nom !== 'string' || nom.trim().length === 0) {
@@ -41,8 +53,8 @@ export async function onRequestPost(context) {
       })
     }
 
-    if (!puntuacio || typeof puntuacio !== 'number' || puntuacio < 1 || puntuacio > 100) {
-      return Response.json({ error: 'Puntuació invàlida (1-100)' }, {
+    if (!puntuacio || typeof puntuacio !== 'number' || puntuacio < 1) {
+      return Response.json({ error: 'Puntuació invàlida' }, {
         status: 400,
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -55,9 +67,14 @@ export async function onRequestPost(context) {
 
     const nomNet = nom.trim().slice(0, 50)
 
+    // Configuració del tauler (obligatori)
+    const configNet = (typeof configuracio === 'string' && configuracio.trim().length > 0)
+      ? configuracio.trim().slice(0, 50)
+      : 'classic_10x10'
+
     await env.DB.prepare(
-      'INSERT INTO rankings (nom, puntuacio, temps) VALUES (?, ?, ?)'
-    ).bind(nomNet, puntuacio, tempsNet).run()
+      'INSERT INTO rankings (nom, puntuacio, temps, configuracio) VALUES (?, ?, ?, ?)'
+    ).bind(nomNet, puntuacio, tempsNet, configNet).run()
 
     return Response.json({ success: true }, {
       headers: {
