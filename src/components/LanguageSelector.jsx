@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
+import catalanFlag from '../assets/catalan-flag.svg'
 import './LanguageSelector.css'
 
 // Funció per guardar cookie al domini pare (.trumfic.com)
@@ -21,7 +22,7 @@ function setCookie(name, value, days) {
 }
 
 const languages = [
-  { code: 'ca', name: 'Català', flag: '🇦🇩' },
+  { code: 'ca', name: 'Català', flag: catalanFlag, isImage: true },
   { code: 'es', name: 'Español', flag: '🇪🇸' },
   { code: 'en', name: 'English', flag: '🇬🇧' },
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
@@ -83,7 +84,11 @@ function LanguageSelector() {
               className={`language-option ${lang.code === i18n.language ? 'active' : ''}`}
               onClick={() => changeLanguage(lang.code)}
             >
-              <span className="language-flag">{lang.flag}</span>
+              <span className="language-flag">
+                {lang.isImage
+                  ? <img src={lang.flag} alt={lang.name} className="language-flag-img" />
+                  : lang.flag}
+              </span>
               <span className="language-name">{lang.name}</span>
             </button>
           ))}
