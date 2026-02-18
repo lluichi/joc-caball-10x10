@@ -1,7 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 540">
-  <rect width="810" height="540" fill="#FCDD09"/>
-  <rect y="60" width="810" height="60" fill="#DA121A"/>
-  <rect y="180" width="810" height="60" fill="#DA121A"/>
-  <rect y="300" width="810" height="60" fill="#DA121A"/>
-  <rect y="420" width="810" height="60" fill="#DA121A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 94">
+  <defs>
+    <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.04"/>
+      <stop offset="18%" stop-color="#fff" stop-opacity="0.12"/>
+      <stop offset="35%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="52%" stop-color="#000" stop-opacity="0.18"/>
+      <stop offset="68%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="83%" stop-color="#fff" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <!-- Stripe 1 yellow -->
+  <path d="M0,6 C10,9 30,9 40,6 C50,1 70,1 80,6 C90,12 110,12 120,6 L120,15 C110,21 90,21 80,15 C70,10 50,10 40,15 C30,18 10,18 0,15Z" fill="#FCDD09"/>
+  <!-- Stripe 2 red -->
+  <path d="M0,15 C10,18 30,18 40,15 C50,10 70,10 80,15 C90,21 110,21 120,15 L120,24 C110,30 90,30 80,24 C70,19 50,19 40,24 C30,27 10,27 0,24Z" fill="#DA121A"/>
+  <!-- Stripe 3 yellow -->
+  <path d="M0,24 C10,27 30,27 40,24 C50,19 70,19 80,24 C90,30 110,30 120,24 L120,33 C110,39 90,39 80,33 C70,28 50,28 40,33 C30,36 10,36 0,33Z" fill="#FCDD09"/>
+  <!-- Stripe 4 red -->
+  <path d="M0,33 C10,36 30,36 40,33 C50,28 70,28 80,33 C90,39 110,39 120,33 L120,42 C110,48 90,48 80,42 C70,37 50,37 40,42 C30,45 10,45 0,42Z" fill="#DA121A"/>
+  <!-- Stripe 5 yellow -->
+  <path d="M0,42 C10,45 30,45 40,42 C50,37 70,37 80,42 C90,48 110,48 120,42 L120,51 C110,57 90,57 80,51 C70,46 50,46 40,51 C30,54 10,54 0,51Z" fill="#FCDD09"/>
+  <!-- Stripe 6 red -->
+  <path d="M0,51 C10,54 30,54 40,51 C50,46 70,46 80,51 C90,57 110,57 120,51 L120,60 C110,66 90,66 80,60 C70,55 50,55 40,60 C30,63 10,63 0,60Z" fill="#DA121A"/>
+  <!-- Stripe 7 yellow -->
+  <path d="M0,60 C10,63 30,63 40,60 C50,55 70,55 80,60 C90,66 110,66 120,60 L120,69 C110,75 90,75 80,69 C70,64 50,64 40,69 C30,72 10,72 0,69Z" fill="#FCDD09"/>
+  <!-- Stripe 8 red -->
+  <path d="M0,69 C10,72 30,72 40,69 C50,64 70,64 80,69 C90,75 110,75 120,69 L120,78 C110,84 90,84 80,78 C70,73 50,73 40,78 C30,81 10,81 0,78Z" fill="#DA121A"/>
+  <!-- Stripe 9 yellow -->
+  <path d="M0,78 C10,81 30,81 40,78 C50,73 70,73 80,78 C90,84 110,84 120,78 L120,87 C110,93 90,93 80,87 C70,82 50,82 40,87 C30,90 10,90 0,87Z" fill="#FCDD09"/>
+  <!-- Cloth shading overlay -->
+  <path d="M0,6 C10,9 30,9 40,6 C50,1 70,1 80,6 C90,12 110,12 120,6 L120,87 C110,93 90,93 80,87 C70,82 50,82 40,87 C30,90 10,90 0,87Z" fill="url(#shade)"/>
+  <!-- Subtle outline -->
+  <path d="M0,6 C10,9 30,9 40,6 C50,1 70,1 80,6 C90,12 110,12 120,6 L120,87 C110,93 90,93 80,87 C70,82 50,82 40,87 C30,90 10,90 0,87Z" fill="none" stroke="#00000022" stroke-width="0.5"/>
 </svg>
