@@ -14,7 +14,7 @@
 
 /* Casella bloquejada (no forma part del tauler) */
 .cell-blocked {
-  background: transparent !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) fixed !important;
   cursor: default;
   pointer-events: none;
 }
