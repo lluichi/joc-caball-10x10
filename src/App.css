@@ -76,12 +76,6 @@
   text-overflow: ellipsis;
 }
 
-.header-board-name {
-  font-size: 0.85rem;
-  opacity: 0.85;
-  font-weight: normal;
-  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-}
 
 /* Selector d'idioma a la dreta (desktop) */
 .header-right {
@@ -294,10 +288,6 @@
     font-size: 1.1rem;
   }
 
-  .header-board-name {
-    font-size: 0.75rem;
-  }
-
   .controls {
     gap: 8px;
   }
@@ -339,10 +329,6 @@
     font-size: 1.3rem;
   }
 
-  .header-board-name {
-    font-size: 0.7rem;
-  }
-
   .game-info {
     padding: 8px 15px;
     margin-bottom: 6px;
@@ -372,10 +358,6 @@
 @media (max-width: 400px) {
   .header h1 {
     font-size: 0.85rem;
-  }
-
-  .header-board-name {
-    display: none;
   }
 
   .game-info {
