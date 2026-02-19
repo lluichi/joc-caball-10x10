@@ -1,6 +1,10 @@
 import './Cell.css'
 
-function Cell({ value, isKnight, isValidMove, isInvalidMove, isLight, isFirstMove, onClick }) {
+function Cell({ value, isBlocked, isKnight, isValidMove, isInvalidMove, isLight, isFirstMove, onClick }) {
+  if (isBlocked) {
+    return <div className="cell cell-blocked" />
+  }
+
   let className = 'cell'
   className += isLight ? ' cell-light' : ' cell-dark'
 

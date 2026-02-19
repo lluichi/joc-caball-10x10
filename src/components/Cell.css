@@ -1,8 +1,8 @@
 /* Cell.css */
 
 .cell {
-  width: 50px;
-  height: 50px;
+  width: min(50px, calc(500px / var(--board-cols, 10)));
+  height: min(50px, calc(500px / var(--board-cols, 10)));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,6 +10,13 @@
   transition: all 0.2s ease;
   position: relative;
   font-weight: bold;
+}
+
+/* Casella bloquejada (no forma part del tauler) */
+.cell-blocked {
+  background: transparent !important;
+  cursor: default;
+  pointer-events: none;
 }
 
 .cell-light {
@@ -33,7 +40,7 @@
 }
 
 .knight {
-  font-size: 2rem;
+  font-size: calc(min(50px, calc(500px / var(--board-cols, 10))) * 0.6);
   color: #333;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
@@ -52,7 +59,7 @@
 }
 
 .valid-indicator {
-  font-size: 1.5rem;
+  font-size: calc(min(50px, calc(500px / var(--board-cols, 10))) * 0.4);
   color: #fff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
   animation: bounce 0.5s ease-in-out infinite;
@@ -85,7 +92,7 @@
 }
 
 .cell-number {
-  font-size: 0.9rem;
+  font-size: calc(min(50px, calc(500px / var(--board-cols, 10))) * 0.28);
   color: #2c5282;
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
@@ -100,7 +107,7 @@
 }
 
 /* Hover general */
-.cell:hover:not(.cell-visited):not(.cell-knight) {
+.cell:hover:not(.cell-visited):not(.cell-knight):not(.cell-blocked) {
   transform: scale(1.05);
   z-index: 1;
 }
@@ -113,48 +120,39 @@
 /* Responsive - Tablet */
 @media (max-width: 600px) {
   .cell {
-    width: 40px;
-    height: 40px;
+    width: min(40px, calc(400px / var(--board-cols, 10)));
+    height: min(40px, calc(400px / var(--board-cols, 10)));
   }
 
   .knight {
-    font-size: 1.6rem;
+    font-size: calc(min(40px, calc(400px / var(--board-cols, 10))) * 0.6);
   }
 
   .cell-number {
-    font-size: 0.75rem;
+    font-size: calc(min(40px, calc(400px / var(--board-cols, 10))) * 0.28);
   }
 
   .valid-indicator {
-    font-size: 1.1rem;
+    font-size: calc(min(40px, calc(400px / var(--board-cols, 10))) * 0.4);
   }
 }
 
 /* Responsive - Mòbil: maximitzar taulell */
 @media (max-width: 550px) {
   .cell {
-    /* Calcula mida per ocupar tot l'ample: (100vw - padding) / 10 caselles */
-    width: calc((100vw - 36px) / 10);
-    height: calc((100vw - 36px) / 10);
+    width: calc((100vw - 36px) / var(--board-cols, 10));
+    height: calc((100vw - 36px) / var(--board-cols, 10));
   }
 
   .knight {
-    font-size: calc((100vw - 36px) / 10 * 0.6);
+    font-size: calc((100vw - 36px) / var(--board-cols, 10) * 0.6);
   }
 
   .cell-number {
-    font-size: calc((100vw - 36px) / 10 * 0.28);
+    font-size: calc((100vw - 36px) / var(--board-cols, 10) * 0.28);
   }
 
   .valid-indicator {
-    font-size: calc((100vw - 36px) / 10 * 0.4);
-  }
-}
-
-/* Limitar mida màxima en pantalles molt amples */
-@media (min-width: 551px) and (max-width: 600px) {
-  .cell {
-    width: 45px;
-    height: 45px;
+    font-size: calc((100vw - 36px) / var(--board-cols, 10) * 0.4);
   }
 }

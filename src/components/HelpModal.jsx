@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import './HelpModal.css'
 
-function HelpModal({ onClose }) {
+function HelpModal({ maxScore, onClose }) {
   const { t } = useTranslation()
 
   return (
@@ -72,7 +72,7 @@ function HelpModal({ onClose }) {
 
           <div className="help-section">
             <h3>🏆 {t('help.scoring')}</h3>
-            <p>{t('help.scoringText')}</p>
+            <p>{t('help.scoringText', { max: maxScore })}</p>
           </div>
         </div>
 
