@@ -237,8 +237,7 @@ function App() {
           <div className="header-title">
             <span className="header-knight">♞</span>
             <h1>
-              {t('game.title')}
-              <span className="header-board-name"> — {t(`boards.${boardConfigId}`)}</span>
+              {t('game.title')} — {t(`boards.${boardConfigId}`)}
             </h1>
           </div>
 
