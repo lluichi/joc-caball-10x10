@@ -213,7 +213,7 @@
 
 /* Contenidor del taulell */
 .game-container {
-  background: white;
+  background: transparent;
   border-radius: 15px;
   padding: 10px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
